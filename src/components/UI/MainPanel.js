@@ -5,12 +5,7 @@ const MainPanel = (props) =>{
     const classes = props.className;
 
     return(
-        <React.Fragment>
-        <div className={classes}>hola</div>
-        
-       
-
-        </React.Fragment>
+        <div className={classes}>{props.children}</div>
     )
 
 

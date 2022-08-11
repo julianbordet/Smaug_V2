@@ -20,6 +20,7 @@ function App() {
       </Route>
 
       <Route path={pages.dashboardPage}>
+        
         <Dashboard />
       </Route>
 
