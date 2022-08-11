@@ -2,13 +2,10 @@ import React from "react";
 import Header from "../UI/Header";
 import Body from "../UI/Body";
 
-const InnerLayout = () =>{
+const InnerLayout = (props) =>{
 
     return(
-        <React.Fragment>
-            <Header />
-            <Body />
-        </React.Fragment>
+        <React.Fragment>{props.children}</React.Fragment>
     )
 
 }

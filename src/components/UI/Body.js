@@ -4,12 +4,11 @@ import MainPanel from "./MainPanel";
 import '../../styles/Body.css';
 
 
-const Body = () =>{
+const Body = (props) =>{
 
     return(
         <div className='flex-container'>
-            <VerticalNavbar className='verticalNavbar' />
-            <MainPanel className="mainPanel"></MainPanel>
+            {props.children}
         </div>
     );
 

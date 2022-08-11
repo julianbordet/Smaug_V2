@@ -1,10 +1,10 @@
-const LandingLayout = () =>{
+const LandingLayout = (props) =>{
 
     //Inside landing layout goes the log in component
 
     return(
         <LandingLayout>
-        
+            {props.children}
         </LandingLayout>
     )
 
