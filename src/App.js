@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import './styles/App.css';
 import Dashboard from './pages/Dashboard';
 import MyBugs from './pages/MyBugs';
 import MyProjects from './pages/MyProjects';
@@ -10,17 +9,17 @@ import Landing from './pages/Landing';
 import BugDetail from './pages/BugDetail';
 import ProjectDetail from './pages/ProjectDetail';
 import { pages } from './util/Constants';
+import './styles/App.css';
 
 function App() {
 
   return (
     <Switch>
-      <Route path='/' exact>
+      <Route path={pages.rootPage} exact>
         <Landing />
       </Route>
 
       <Route path={pages.dashboardPage}>
-        
         <Dashboard />
       </Route>
 
