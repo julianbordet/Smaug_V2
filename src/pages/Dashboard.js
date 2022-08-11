@@ -3,11 +3,18 @@ import InnerLayout from "../components/layout/InnerLayout";
 
 const Dashboard = () =>{
 
+
+    return(
+        <h1>Dashboard page</h1>
+    )
+
+    /*
     return(
         <InnerLayout>
-            {/*<Componente de los graficos de dona*/}
+            {<Componente de los graficos de dona}
         </InnerLayout>
     )
+    */
 
 }
 

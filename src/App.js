@@ -12,10 +12,10 @@ import ProjectDetail from './pages/ProjectDetail';
 import { pages } from './util/Constants';
 
 function App() {
-  return (
 
+  return (
     <Switch>
-      <Route path={pages.rootPage}>
+      <Route path='/' exact>
         <Landing />
       </Route>
 
@@ -47,7 +47,6 @@ function App() {
         <NotFound />
       </Route>
     </Switch>
-   
   );
 }
 
