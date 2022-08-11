@@ -2,8 +2,15 @@ import React from "react";
 
 const MainPanel = (props) =>{
 
+    const classes = props.className;
+
     return(
-        <div>{props.children}</div>
+        <React.Fragment>
+        <div className={classes}>hola</div>
+        
+       
+
+        </React.Fragment>
     )
 
 

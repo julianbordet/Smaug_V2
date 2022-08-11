@@ -1,0 +1,17 @@
+.flex-container{
+    display: flex;
+}
+
+.verticalNavbar{
+    width:10%;
+    height: 90vh;
+}
+
+.mainPanel{
+    width:90%;
+  
+    background-image: url("../img/backgroundCompressed.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}

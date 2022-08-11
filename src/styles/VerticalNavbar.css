@@ -1,0 +1,10 @@
+.verticalNavbar{
+    background-color: #212f3d;
+    color:white;
+    box-sizing: border-box;
+}
+
+.navItemTitle{
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}

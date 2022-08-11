@@ -6,6 +6,8 @@
 .column{
     display: flex;
     flex-direction: column;
+   
+
 }
 
 .justifyCenter{

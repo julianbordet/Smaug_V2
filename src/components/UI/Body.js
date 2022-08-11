@@ -1,14 +1,16 @@
 import React from "react";
 import VerticalNavbar from "./VerticalNavbar";
 import MainPanel from "./MainPanel";
+import '../../styles/Body.css';
+
 
 const Body = () =>{
 
     return(
-        <React.Fragment>
-            <VerticalNavbar />
-            <MainPanel />
-        </React.Fragment>
+        <div className='flex-container'>
+            <VerticalNavbar className='verticalNavbar' />
+            <MainPanel className="mainPanel"></MainPanel>
+        </div>
     );
 
 }

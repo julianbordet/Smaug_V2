@@ -1,0 +1,17 @@
+.navButton{
+    align-items: center;
+    justify-content: center;
+
+    padding-top:4rem;
+    padding-bottom: 4rem;
+    border: 2px solid white;
+   
+    height:100%;
+    box-sizing: border-box; 
+    max-height: 205px;
+}
+
+.navButton:hover{
+    color:#d5b038;
+    cursor: pointer;
+}
