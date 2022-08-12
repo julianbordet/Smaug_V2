@@ -11,7 +11,7 @@ const MyBugs = () =>{
         <Header />
         <Body>
             <VerticalNavbar className='verticalNavbar' />
-            <MyBugsPanel className='mainPanel'/>
+            <MyBugsPanel className='mainPanel bugsPanel'/>
         </Body>
     </InnerLayout>
     )
