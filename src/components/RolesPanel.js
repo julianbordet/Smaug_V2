@@ -7,8 +7,8 @@ const RolesPanel = (props) =>{
     return(
         <div className={classes}>
             <h1>Roles Panel</h1>
-            <h1>Roles Panel</h1>
-            <h1>Roles Panel</h1>
+       
+        
             
         </div>
     )

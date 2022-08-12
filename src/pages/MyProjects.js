@@ -11,7 +11,7 @@ const MyProjects = () =>{
         <Header />
         <Body>
             <VerticalNavbar className='verticalNavbar' />
-            <MyProjectsPanel className='mainPanel'/>
+            <MyProjectsPanel className='mainPanel projectPanelContainer'/>
         </Body>
     </InnerLayout>
     )

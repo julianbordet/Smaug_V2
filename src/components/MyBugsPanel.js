@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/MainPanel.css';
 import '../styles/MyBugsPanel.css';
 import { DUMMY_BUGS } from '../util/Constants';
+import "../styles/TableStyles.css"
 
 const MyBugsPanel = (props) => {
 

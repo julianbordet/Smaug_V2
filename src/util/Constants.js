@@ -48,4 +48,23 @@ const DUMMY_BUGS = [
     },
 ];
 
-export { pages, DUMMY_BUGS }
+const DUMMY_PROJECTS = [
+    {
+        projectId : 1,
+        name: "smaug",
+        description: "a bug tracker"
+    },
+    {
+        projectId : 2,
+        name: "erebor",
+        description: "a rest api"
+    },
+    {
+        projectId : 3,
+        name: "bilbo",
+        description: "the thing"
+    },
+    
+]
+
+export { pages, DUMMY_BUGS, DUMMY_PROJECTS }
