@@ -7,7 +7,6 @@ import Body from "../components/UI/Body";
 
 const Dashboard = () =>{
 
-
     return(
     
         <InnerLayout>
@@ -19,8 +18,6 @@ const Dashboard = () =>{
         </InnerLayout>
         
     )
-
-   
 
 }
 

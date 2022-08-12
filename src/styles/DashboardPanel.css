@@ -1,0 +1,23 @@
+.dashboard-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+h3{
+    font-size: 1.5rem;
+}
+
+.FlexRow{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flexColumn{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    height:80%;
+}
