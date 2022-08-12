@@ -1,9 +1,16 @@
 import React from "react";
+import LandingLayout from "../components/layout/LandingLayout";
+import LandingPanel from "../components/LandingPanel";
+import LandingFooter from "../components/LandingFooter";
+import "../styles/Landing.css"
 
 const Landing = () =>{
 
     return(
-        <h1>Landing Page</h1>
+        <LandingLayout>
+            <LandingPanel className='landing-panel'/>
+            <LandingFooter className='landing-footer'/>
+        </LandingLayout>
     )
 
 }

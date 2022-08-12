@@ -1,11 +1,13 @@
+import React from "react";
+
 const LandingLayout = (props) =>{
 
-    //Inside landing layout goes the log in component
+   
 
     return(
-        <LandingLayout>
+        <React.Fragment>
             {props.children}
-        </LandingLayout>
+        </React.Fragment>
     )
 
 }

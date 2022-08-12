@@ -10,6 +10,7 @@ import BugDetail from './pages/BugDetail';
 import ProjectDetail from './pages/ProjectDetail';
 import { pages } from './util/Constants';
 import './styles/App.css';
+import NewBug from './pages/NewBug';
 
 function App() {
 
@@ -29,6 +30,10 @@ function App() {
 
       <Route path={pages.bugDetailPage}>
         <BugDetail />
+      </Route>
+
+      <Route path={pages.newBug}>
+        <NewBug />
       </Route>
 
       <Route path={pages.myProjectsPage} exact>
