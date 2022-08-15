@@ -6,7 +6,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const ChartSlice = createSlice({
     name: 'chart',
     initialState: {
-        bugs: []
+        bugs: [],
+        bug: []
     },
     reducers: {
         setBugs(state, action){
@@ -15,6 +16,9 @@ const ChartSlice = createSlice({
             state.bugs = action.payload;
 
            //console.log(state)
+        },
+        getSingleBug(state, action){
+            state.bug = action.payload;
         }
     }
 })

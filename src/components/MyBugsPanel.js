@@ -23,7 +23,7 @@ const MyBugsPanel = (props) => {
     const selectBugHandler = (bugId) =>{
 
         //redirect to bugs/bugId
-        history.push(`/mybugs/${bugId}`)
+        history.push(`/mybugs/detail?${bugId}`)
 
     }
 

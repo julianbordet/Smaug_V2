@@ -1,3 +1,6 @@
+
+
+
 const NewBugPanel = (props) =>{
 
     const classes = props.className;
