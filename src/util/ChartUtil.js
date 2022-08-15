@@ -20,7 +20,7 @@ const isBugDue = (bugObject) =>{
     let today = new Date();
 
 
-    if(bugDate < today){
+    if(bugDate > today){
         return true;
     } else {
         return false;
@@ -30,9 +30,19 @@ const isBugDue = (bugObject) =>{
 
 const ProcessDataForDueNotDueChart = (chartData) =>{
 
+    //console.log(chartData)
+
     let bugsDue = 0;
     let bugsNotDue = 0;
 
+    chartData.forEach( bug => {
+        if(isBugDue(bug)){
+            bugsDue++;
+        } else {
+            bugsNotDue++;
+        }
+    })
+     /*
     for(let bug in chartData){
         if(isBugDue(bug)){
             bugsDue++;
@@ -40,14 +50,19 @@ const ProcessDataForDueNotDueChart = (chartData) =>{
             bugsNotDue++;
         }
     }
+    */
 
    let result = [bugsDue, bugsNotDue];
+
+   //console.log(result)
 
    return result;
 }
 
 
 const drawChartForBugsDueNotDue = (chartData) =>{
+
+    
 
     let [bugsDue, bugsNotDue] = ProcessDataForDueNotDueChart(chartData);
 
