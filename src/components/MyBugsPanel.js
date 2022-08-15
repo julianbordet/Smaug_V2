@@ -4,10 +4,12 @@ import '../styles/MyBugsPanel.css';
 import "../styles/TableStyles.css"
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBugData } from '../store/BugActions';
+import { useHistory } from 'react-router-dom';
 
 const MyBugsPanel = (props) => {
 
     const classes = props.className;
+    const history = useHistory();
     const dispatch = useDispatch()
 
     const bugData = useSelector( (state) => state.fetchChartData)
@@ -16,6 +18,14 @@ const MyBugsPanel = (props) => {
         dispatch(fetchBugData());
     }
     ,[dispatch])
+
+
+    const selectBugHandler = (bugId) =>{
+
+        //redirect to bugs/bugId
+        history.push(`/mybugs/${bugId}`)
+
+    }
 
     return (
         <div className={classes}>
@@ -33,7 +43,7 @@ const MyBugsPanel = (props) => {
                     </tr>
                     
                     {bugData.bugs.bugs.map( (bug) =>(
-                        <tr>
+                        <tr onClick={() =>{selectBugHandler(bug.bugId)}}>
                             <td>{bug.bugId}</td>
                             <td>{bug.title}</td>
                             <td>{bug.projectId}</td>

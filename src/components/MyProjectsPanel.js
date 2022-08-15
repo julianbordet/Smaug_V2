@@ -1,41 +1,56 @@
 import '../styles/MainPanel.css'
 import "../styles/MyProjectsPanel.css"
-import { DUMMY_PROJECTS } from '../util/Constants'
+import { useDispatch, useSelector } from 'react-redux';
+import fetchProjectData from '../store/ProjectActions';
+import { useEffect } from 'react';
 
 
 
 
-const MyProjectsPanel = (props) =>{
+const MyProjectsPanel = (props) => {
 
     const classes = props.className;
 
-    return(
-        <div className={classes}>
-            <h1>My Projects:</h1>
-            
-            
-            <div className=''>
-                <table>
-                    <tr>
-                        <td>Project name</td>
-                        <td>Project Description</td>
-                    </tr>
-                    
-                    {DUMMY_PROJECTS.map( (project) =>(
-                        <tr>
-                            <td>{project.name}</td>
-                            <td>{project.description}</td>
-                        </tr>
-                        ))}
-                
-                </table>
-            </div>
+    const dispatch = useDispatch();
 
+    const projectData = useSelector((state) => state.fetchProjectData);
+
+
+    useEffect(() => {
+        dispatch(fetchProjectData());
+    }
+        , [dispatch])
+
+    return (
         
+            <div className={classes}>
+                {projectData.projects.projects && projectData && <div>
+                    <h1>My Projects:</h1>
+                    <div className=''>
+                        <table>
+                            <tr>
+                                <td>Project name</td>
+                                <td>Project Description</td>
+                            </tr>
+                            
+                            {projectData.projects.projects.map( (project) =>(
+                                <tr>
+                                    <td>{project.projectName}</td>
+                                    <td>{project.projectDescription}</td>
+                                </tr>
+                                ))}
+                        
+                        </table>
+                    </div>
+                </div>
+                
+
+                }
+
+            </div>
         
-        </div>
     )
-    
+
 
 }
 
