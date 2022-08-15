@@ -155,6 +155,8 @@ const drawSeverityChart = (chartData) =>{
 
 const ProcessDataForPriorityChart = (chartData) =>{
 
+    console.log(chartData)
+
     let prioCrit = 0;
     let prioHigh = 0;
     let prioMed = 0;
@@ -208,6 +210,38 @@ const drawPriorityChart = (chartData) =>{
     };
 
     return data3;
+}
+
+const drawBugsByProjectChart = (chartData) =>{
+
+    /* TODO
+    let [bugList, projectList] = [];
+    
+    let result = {
+        element1 : null,
+        element2 : null,
+        element3 : null,
+        element4 : null
+    }
+
+    let elementNro = 1;
+
+    for(let i = 0; i < bugList.length; i++){
+
+        for(let j = 0; j < projectList.length; j++){
+
+            if(bugList[i].projectId === projectList[j].projectId){
+                resul
+            } 
+
+        }
+
+    }
+    */
+
+  
+
+
 }
 
 

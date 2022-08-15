@@ -1,18 +1,26 @@
-import React from 'react';
+import {React, useEffect} from 'react';
 import '../styles/MainPanel.css';
 import '../styles/MyBugsPanel.css';
-import { DUMMY_BUGS } from '../util/Constants';
 import "../styles/TableStyles.css"
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchBugData } from '../store/BugActions';
 
 const MyBugsPanel = (props) => {
 
     const classes = props.className;
+    const dispatch = useDispatch()
 
-    
+    const bugData = useSelector( (state) => state.fetchChartData)
+
+    useEffect( () =>{
+        dispatch(fetchBugData());
+    }
+    ,[dispatch])
 
     return (
         <div className={classes}>
-            <div className='table-container'>
+
+            {bugData.bugs.bugs && <div className='table-container'>
                 <table>
                     <tr>
                         <td>Bug ID</td>
@@ -24,20 +32,22 @@ const MyBugsPanel = (props) => {
                         <td>Fix Due Date</td>
                     </tr>
                     
-                    {DUMMY_BUGS.map( (bug) =>(
+                    {bugData.bugs.bugs.map( (bug) =>(
                         <tr>
                             <td>{bug.bugId}</td>
-                            <td>{bug.bugTitle}</td>
-                            <td>{bug.project}</td>
+                            <td>{bug.title}</td>
+                            <td>{bug.projectId}</td>
                             <td>{bug.severity}</td>
                             <td>{bug.priority}</td>
-                            <td>{bug.status}</td>
-                            <td>{bug.fixDueDate}</td>
+                            <td>{bug.isFixed}</td>
+                            <td>{bug.dueDate}</td>
                         </tr>
                         ))}
                 
                 </table>
-            </div>
+            </div>}
+
+           
 
         </div>
     )

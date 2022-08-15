@@ -9,9 +9,6 @@ import {drawChartForBugsDueNotDue, drawSeverityChart, drawPriorityChart} from '.
 
 
 
-
-
-
 const DashboardPanel = (props) =>{
 
     const classes = props.className;
@@ -27,17 +24,8 @@ const DashboardPanel = (props) =>{
     
     useEffect( () =>{
         dispatch(fetchBugData());
-
-        /*
-        for(const item in bugData.bugs) {
-            console.log(item)  
-        }
-        */
-     
     }
     ,[dispatch])
-
-
 
 
     useEffect(()=>{
@@ -52,29 +40,11 @@ const DashboardPanel = (props) =>{
 
             const tempData3 = drawPriorityChart(bugData.bugs.bugs);
             setData3(tempData3);
-            //console.log(tempData1)
-            //console.log(tempData1)
-            //tempData2 = getDataForChart2(bugData.bugs.bugs);
-            //tempData3 = getDataForChart3(bugData.bugs.bugs);
-            //tempData4 = getDataForChart4(bugData.bugs.bugs);
 
-            //setData1(tempData1)
-            //setData2(tempData2)
-            //setData3(tempData3)
-            //setData4(tempData4)
-
+            //TODO CHART4
         }
-
     }
     ,[bugData])
-
-
-     /*
-     esto es un array
-   {console.log(bugData.bugs.bugs)}
-
-
-     */
 
 
     return(
@@ -96,16 +66,15 @@ const DashboardPanel = (props) =>{
                          </Card>
                 }
 
+                </div>
+
+                <div className='FlexRow'>
+
                 {bugData.bugs.bugs && data3 && <Card className='dashboard-card'>
                         <h3>Bugs Priority</h3>
                         <DoughnutChart chartData={data3} />
                          </Card>
                 }
-            
-               
-
-             
-
 
                 </div>
 
