@@ -19,7 +19,21 @@ const DashboardPanel = (props) =>{
     useEffect( () =>{
         dispatch(fetchBugData());
 
+        /*
+        for(const item in bugData.bugs) {
+            console.log(item)  
+        }
+        */
+
+       
         
+
+
+
+
+
+
+
 
         
     }
@@ -27,9 +41,10 @@ const DashboardPanel = (props) =>{
 
 
      /*
-    {bugData.bugs.map((bug) => (
-        <h1>hola</h1>
-     ))}
+     esto es un array
+   {console.log(bugData.bugs.bugs)}
+
+
      */
 
 
@@ -40,8 +55,13 @@ const DashboardPanel = (props) =>{
 
                 <div className='FlexRow'>
 
-              
-             {console.log(bugData)}
+              {bugData.bugs.bugs && bugData.bugs.bugs.map((bug) => (
+                <h1>hello</h1>
+              ))}
+            
+               
+
+             
 
 
                 </div>

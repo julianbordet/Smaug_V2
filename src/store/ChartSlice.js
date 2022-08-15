@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+
 const ChartSlice = createSlice({
     name: 'chart',
     initialState: {
-        bugs: 0
+        bugs: []
     },
     reducers: {
         setBugs(state, action){
