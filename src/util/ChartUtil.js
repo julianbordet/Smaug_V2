@@ -16,11 +16,13 @@ const getToday = () => {
 
 const isBugDue = (bugObject) =>{
 
-    let bugDate = new Date(bugObject.DueDate)
+
+
+    let bugDate = new Date(bugObject.dueDate)
     let today = new Date();
 
 
-    if(bugDate > today){
+    if(bugDate < today){
         return true;
     } else {
         return false;
