@@ -7,7 +7,7 @@ export const fetchBugData = () =>{
             const response = await fetch('http://localhost:8080/api/bugs');
 
             if (!response.ok) {
-                throw new Error('Could not fetch cart data!');
+                throw new Error('Could not fetch bug data!');
               }
 
             const data = await response.json();
@@ -41,12 +41,12 @@ export const fetchSpecificBugData = (param) =>{
             const response = await fetch(url);
 
             if (!response.ok) {
-                throw new Error('Could not fetch cart data!');
+                throw new Error('Could not fetch bug data!');
               }
 
             const data = await response.json();
 
-            console.log(data)
+            //console.log(data)
 
             return data;
         };
@@ -66,6 +66,35 @@ export const fetchSpecificBugData = (param) =>{
 
 }
 
-export const updateBug = () =>{
+export const updateBug = (bug) =>{
+
+        const postData = async() =>{
+
+            const url = `http://localhost:8080/api/bugs`;
+            //console.log(url)
+            console.log(bug)
+
+            //console.log(JSON.stringify(bug))
+
+            
+            const response = await fetch(url, {
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify(bug)
+            });
+
+            if (!response.ok) {
+                throw new Error('Could not fetch bug data!');
+              }
+        };
+
+        postData();
+
     
+
+    
+
 }

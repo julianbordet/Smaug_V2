@@ -28,18 +28,19 @@ const MyProjectsPanel = (props) => {
                     <h1>My Projects:</h1>
                     <div className=''>
                         <table>
-                            <tr>
-                                <td>Project name</td>
-                                <td>Project Description</td>
-                            </tr>
-                            
-                            {projectData.projects.projects.map( (project) =>(
+                            <tbody>
                                 <tr>
-                                    <td>{project.projectName}</td>
-                                    <td>{project.projectDescription}</td>
+                                    <td>Project name</td>
+                                    <td>Project Description</td>
                                 </tr>
-                                ))}
-                        
+                                
+                                {projectData.projects.projects.map( (project) =>(
+                                    <tr key={Math.random()}>
+                                        <td key={Math.random()}>{project.projectName}</td>
+                                        <td key={Math.random()}>{project.projectDescription}</td>
+                                    </tr>
+                                    ))}
+                            </tbody>
                         </table>
                     </div>
                 </div>
