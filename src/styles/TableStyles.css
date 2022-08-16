@@ -5,7 +5,7 @@ CLASSES ITS AFFECTING TABLES ACROSS THE WHOLE APP*/
 .table-container{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 50%;
     text-align: center;
 }
@@ -30,7 +30,7 @@ tr:nth-child(even){
 }
 
 tr:first-child{
-    background-color: #36a2eb;
+    background-color: #212f3d;
     color:white;
     font-size: 1.5rem;
     font-weight: bold;
@@ -43,6 +43,7 @@ tr:hover {
 }
 
 tr:first-child:hover{
-    background-color: #04aa6d;
-    cursor:text
+    background-color: #212f3d;
+   
+    
 }

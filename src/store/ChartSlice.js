@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
-
 const ChartSlice = createSlice({
     name: 'chart',
     initialState: {

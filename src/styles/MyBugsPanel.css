@@ -1,3 +1,26 @@
 .bugsPanel{
    
 }
+
+.sectionTitle{
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    font-weight: bold;
+    /*background-color: rgba(163, 166, 168, 0.5);*/
+    background-color:#212f3d;
+    color:white;
+    border-radius: 10px;
+    margin-left: 50rem;
+    margin-right: 50rem;
+    margin-bottom: 3rem;
+}
+
+.sectionTitle:hover{
+    color: #d5b038;
+    /*Make text unselectable*/
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}

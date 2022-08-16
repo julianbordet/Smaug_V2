@@ -267,6 +267,9 @@ const BugDetailPanel = (props) =>{
                         {editActive && <input onChange={statusHandler} id='isFixedInput' name='isFixedInput' className='form-input' type='text' defaultValue={ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed' }></input>}
                         {!editActive && <span className='formSpan'>{ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed'}</span>}
                        
+                        </div>
+                        
+                    <div className='formRow'>
                         {bugData.bug.bug.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
                         {!bugData.bug.bug.dateFixed && editActive && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
                         {editActive && <input onChange={dateFixedHandler} id='dateFixedInput' name='dateFixedInput' className='form-input' type='text' defaultValue={bugData.bug.bug.dateFixed}></input>}
@@ -277,16 +280,16 @@ const BugDetailPanel = (props) =>{
                     <div className='formRow'>
                         <div className='form-column'>
                             <label htmlFor='descriptionInput' className='form-label'>Description:</label>
-                            {editActive && <textarea rows='10' cols='50' onChange={descriptionHandler} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugData.bug.bug.description}></textarea>}
-                            {!editActive && <span className='formSpan'>{bugData.bug.bug.description}</span>}
+                            {editActive && <textarea rows='15' cols='120' onChange={descriptionHandler} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugData.bug.bug.description}></textarea>}
+                            {!editActive && <p className='formSpan'>{bugData.bug.bug.description}</p>}
                         </div>
                     </div>
                         
                     <div className='formRow'>
                         <div className='form-column'>
                             <label htmlFor='stepsToReproduceInput' className='form-label'>Steps to reproduce:</label>
-                            {editActive && <textarea rows='15' cols='80' onChange={stepsHandler} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input' type='text' defaultValue={bugData.bug.bug.stepsToReproduce}></textarea>}
-                            {!editActive && <span className='formSpan'>{bugData.bug.bug.stepsToReproduce}</span>}
+                            {editActive && <textarea rows='15' cols='120' onChange={stepsHandler} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input' type='text' defaultValue={bugData.bug.bug.stepsToReproduce}></textarea>}
+                            {!editActive && <p className='formSpan'>{bugData.bug.bug.stepsToReproduce}</p>}
                         </div>
                     </div>
                  

@@ -32,6 +32,10 @@ const MyBugsPanel = (props) => {
     return (
         <div className={classes}>
 
+            <div className='sectionTitle'>
+                <h1>MY BUGS</h1>
+            </div>
+
             {bugData.bugs.bugs && <div className='table-container'>
                 <table>
                     <tbody>
@@ -41,7 +45,6 @@ const MyBugsPanel = (props) => {
                             <td>Project</td>
                             <td>Severity</td>
                             <td>Priority</td>
-                            <td>Status</td>
                             <td>Fix Due Date</td>
                         </tr>
                         
@@ -52,7 +55,6 @@ const MyBugsPanel = (props) => {
                                 <td key={Math.random()}>{bug.projectId}</td>
                                 <td key={Math.random()}>{bug.severity}</td>
                                 <td key={Math.random()}>{bug.priority}</td>
-                                <td key={Math.random()}>{bug.isFixed}</td>
                                 <td key={Math.random()}>{bug.dueDate}</td>
                             </tr>
                             ))}
