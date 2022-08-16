@@ -251,8 +251,7 @@ const BugDetailPanel = (props) =>{
                     <div className='formRow'>
 
                         <label htmlFor='dateCreatedInput' className='form-label'>Date created:</label>
-                        {editActive && <input id='dateCreatedInput' name='dateCreatedInput' className='form-input' type='text' defaultValue={bugData.bug.bug.dateCreated}></input>}
-                        {!editActive && <span className='formSpan'>{bugData.bug.bug.dateCreated}</span>}
+                        <span className='formSpan'>{bugData.bug.bug.dateCreated}</span>
                         
                     
                         <label htmlFor='dueDateInput' className='form-label'>Due date:</label>
@@ -278,13 +277,15 @@ const BugDetailPanel = (props) =>{
                     <div className='formRow'>
                         <div className='form-column'>
                             <label htmlFor='descriptionInput' className='form-label'>Description:</label>
-                            {editActive && <input onChange={descriptionHandler} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugData.bug.bug.description}></input>}
+                            {editActive && <textarea rows='10' cols='50' onChange={descriptionHandler} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugData.bug.bug.description}></textarea>}
                             {!editActive && <span className='formSpan'>{bugData.bug.bug.description}</span>}
                         </div>
-
+                    </div>
+                        
+                    <div className='formRow'>
                         <div className='form-column'>
                             <label htmlFor='stepsToReproduceInput' className='form-label'>Steps to reproduce:</label>
-                            {editActive && <input onChange={stepsHandler} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input' type='text' defaultValue={bugData.bug.bug.stepsToReproduce}></input>}
+                            {editActive && <textarea rows='15' cols='80' onChange={stepsHandler} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input' type='text' defaultValue={bugData.bug.bug.stepsToReproduce}></textarea>}
                             {!editActive && <span className='formSpan'>{bugData.bug.bug.stepsToReproduce}</span>}
                         </div>
                     </div>

@@ -4,6 +4,8 @@
 
 .verticalNavbar{
     width:10%;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
+   
 }
 

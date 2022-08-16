@@ -2,6 +2,7 @@
     background-color: #212f3d;
     color:white;
     box-sizing: border-box;
+    
 }
 
 .navItemTitle{
@@ -12,4 +13,8 @@
 .link{
     color:inherit;
     text-decoration: none;
+}
+
+.wasabi{
+    height:inherit
 }
