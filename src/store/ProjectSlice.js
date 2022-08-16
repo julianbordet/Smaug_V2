@@ -7,12 +7,8 @@ const ProjectSlice = createSlice({
         projects: []
     },
     reducers: {
-        setProjects(state, action){
-            //console.log(action.payload);
-            
+        setProjects(state, action){    
             state.projects = action.payload;
-
-           //console.log(state)
         }
     }
 })

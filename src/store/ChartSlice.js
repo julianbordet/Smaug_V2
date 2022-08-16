@@ -10,12 +10,8 @@ const ChartSlice = createSlice({
         bug: []
     },
     reducers: {
-        setBugs(state, action){
-            //console.log(action.payload);
-            
+        setBugs(state, action){  
             state.bugs = action.payload;
-
-           //console.log(state)
         },
         getSingleBug(state, action){
             state.bug = action.payload;

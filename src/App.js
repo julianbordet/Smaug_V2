@@ -32,7 +32,6 @@ function App() {
         <BugDetail />
       </Route>
 
-
       <Route path={pages.newBugPage}>
         <NewBug />
       </Route>

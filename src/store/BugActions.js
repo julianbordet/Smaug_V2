@@ -36,7 +36,6 @@ export const fetchSpecificBugData = (param) =>{
         const fetchData = async() =>{
 
             const url = `http://localhost:8080/api/bugs/${param}`;
-            //console.log(url)
 
             const response = await fetch(url);
 
@@ -45,8 +44,6 @@ export const fetchSpecificBugData = (param) =>{
               }
 
             const data = await response.json();
-
-            //console.log(data)
 
             return data;
         };
@@ -71,12 +68,7 @@ export const updateBug = (bug) =>{
         const postData = async() =>{
 
             const url = `http://localhost:8080/api/bugs`;
-            //console.log(url)
-            console.log(bug)
-
-            //console.log(JSON.stringify(bug))
-
-            
+                  
             const response = await fetch(url, {
                 headers: {
                   'Accept': 'application/json',
@@ -100,12 +92,7 @@ export const deleteBug = (bugId) =>{
     const deleteData = async() =>{
 
         const url = `http://localhost:8080/api/bugs/${bugId}`;
-        //console.log(url)
-       
-
-        //console.log(JSON.stringify(bug))
-
-        
+     
         const response = await fetch(url, {
             method: "DELETE"
         });

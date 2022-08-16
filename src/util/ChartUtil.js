@@ -1,4 +1,3 @@
-
 /*
 const getToday = () => {
     let today = new Date();
@@ -14,57 +13,39 @@ const getToday = () => {
 }
 */
 
-const isBugDue = (bugObject) =>{
-
-
+const isBugDue = (bugObject) => {
 
     let bugDate = new Date(bugObject.dueDate)
     let today = new Date();
 
 
-    if(bugDate < today){
+    if (bugDate < today) {
         return true;
     } else {
         return false;
     }
-
 }
 
-const ProcessDataForDueNotDueChart = (chartData) =>{
-
-    //console.log(chartData)
+const ProcessDataForDueNotDueChart = (chartData) => {
 
     let bugsDue = 0;
     let bugsNotDue = 0;
 
-    chartData.forEach( bug => {
-        if(isBugDue(bug)){
+    chartData.forEach(bug => {
+        if (isBugDue(bug)) {
             bugsDue++;
         } else {
             bugsNotDue++;
         }
     })
-     /*
-    for(let bug in chartData){
-        if(isBugDue(bug)){
-            bugsDue++;
-        } else {
-            bugsNotDue++;
-        }
-    }
-    */
 
-   let result = [bugsDue, bugsNotDue];
+    let result = [bugsDue, bugsNotDue];
 
-   //console.log(result)
-
-   return result;
+    return result;
 }
 
 
-const drawChartForBugsDueNotDue = (chartData) =>{
-
-    
+const drawChartForBugsDueNotDue = (chartData) => {
 
     let [bugsDue, bugsNotDue] = ProcessDataForDueNotDueChart(chartData);
 
@@ -73,18 +54,18 @@ const drawChartForBugsDueNotDue = (chartData) =>{
         // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
         datasets: [
             {
-              label: 'Bugs due',
-              data: [bugsDue, bugsNotDue],
-              // you can set indiviual colors for each bar
-              backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 1
+                label: 'Bugs due',
+                data: [bugsDue, bugsNotDue],
+                // you can set indiviual colors for each bar
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
             }
         ]
     };
@@ -93,19 +74,19 @@ const drawChartForBugsDueNotDue = (chartData) =>{
 }
 
 
-const ProcessDataForSeverityChart = (chartData) =>{
+const ProcessDataForSeverityChart = (chartData) => {
 
     let sevCrit = 0;
     let sevHigh = 0;
     let sevMed = 0;
     let sevLow = 0;
 
-    chartData.forEach( (bug) =>{
-        if(bug.severity === "CRITICAL"){
+    chartData.forEach((bug) => {
+        if (bug.severity === "CRITICAL") {
             sevCrit++;
-        } else if(bug.severity === "HIGH"){
+        } else if (bug.severity === "HIGH") {
             sevHigh++;
-        } else if(bug.severity === "MEDIUM"){
+        } else if (bug.severity === "MEDIUM") {
             sevMed++;
         } else {
             sevLow++;
@@ -113,74 +94,67 @@ const ProcessDataForSeverityChart = (chartData) =>{
     })
 
     return [sevCrit, sevHigh, sevLow, sevMed]
-
 }
 
 
-const drawSeverityChart = (chartData) =>{
+const drawSeverityChart = (chartData) => {
 
     let [severityCritical, severityHigh, SeverityMedium, Severitylow] = ProcessDataForSeverityChart(chartData);
 
-   
     const data2 = {
         labels: ['Critical', 'High', 'Medium', 'Low'],
         // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
         datasets: [
             {
-              label: 'Bug Severity',
-              data: [severityCritical, severityHigh, SeverityMedium, Severitylow],
-              // you can set indiviual colors for each bar
-              backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
+                label: 'Bug Severity',
+                data: [severityCritical, severityHigh, SeverityMedium, Severitylow],
+                // you can set indiviual colors for each bar
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
             }
         ]
     };
-
 
     return data2;
 
 }
 
 
-const ProcessDataForPriorityChart = (chartData) =>{
-
-    console.log(chartData)
+const ProcessDataForPriorityChart = (chartData) => {
 
     let prioCrit = 0;
     let prioHigh = 0;
     let prioMed = 0;
     let prioLow = 0;
 
-    chartData.forEach((bug) =>{
-        if(bug.priority === "CRITICAL"){
+    chartData.forEach((bug) => {
+        if (bug.priority === "CRITICAL") {
             prioCrit++;
-        } else if (bug.priority === "HIGH"){
+        } else if (bug.priority === "HIGH") {
             prioHigh++
-        } else if (bug.priority === "MEDIUM"){
+        } else if (bug.priority === "MEDIUM") {
             prioMed++;
-        } else{
+        } else {
             prioLow++
         }
     })
 
     return [prioCrit, prioHigh, prioMed, prioLow]
-
 }
 
 
-const drawPriorityChart = (chartData) =>{
-
+const drawPriorityChart = (chartData) => {
 
     let [priorityCritical, priorityHigh, priorityMedium, prioritylow] = ProcessDataForPriorityChart(chartData);
 
@@ -189,22 +163,22 @@ const drawPriorityChart = (chartData) =>{
         // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
         datasets: [
             {
-              label: 'Bug Priority',
-              data: [priorityCritical, priorityHigh, priorityMedium, prioritylow],
-              // you can set indiviual colors for each bar
-              backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
+                label: 'Bug Priority',
+                data: [priorityCritical, priorityHigh, priorityMedium, prioritylow],
+                // you can set indiviual colors for each bar
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
             }
         ]
     };
@@ -212,7 +186,7 @@ const drawPriorityChart = (chartData) =>{
     return data3;
 }
 
-const drawBugsByProjectChart = (chartData) =>{
+const drawBugsByProjectChart = (chartData) => {
 
     /* TODO
     let [bugList, projectList] = [];
@@ -239,12 +213,9 @@ const drawBugsByProjectChart = (chartData) =>{
     }
     */
 
-  
+
 
 
 }
-
-
-
 
 export { drawChartForBugsDueNotDue, drawSeverityChart, drawPriorityChart }

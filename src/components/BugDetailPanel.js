@@ -168,9 +168,9 @@ const BugDetailPanel = (props) =>{
         }
 
         
-        ///console.log(JSON.stringify(bug))
+        
 
-        console.log('wasabikn')
+        
         updateBug(bug)
 
         //redirect to myBugs
