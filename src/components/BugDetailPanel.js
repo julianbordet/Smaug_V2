@@ -196,8 +196,8 @@ const BugDetailPanel = (props) =>{
                     <div className='buttonsContainer'>
                         
                             {!editActive && 
-                            <div className='buttonAndIcon'>
-                                <button className='editButton detailsButton' onClick={editHandler}>EDIT</button>
+                            <div onClick={editHandler} className='buttonAndIcon'>
+                                <button className='editButton detailsButton' >EDIT</button>
                                 <FontAwesomeIcon className='ficon' icon={faFilePen} size="2x" />
                                 
 
@@ -205,22 +205,22 @@ const BugDetailPanel = (props) =>{
                             }
                             
                         {!editActive &&
-                        <div className='buttonAndIcon'>
-                            <button className='editButton detailsButton' onClick={deleteHandler}>DELETE</button>
+                        <div onClick={deleteHandler} className='buttonAndIcon'>
+                            <button className='editButton detailsButton'>DELETE</button>
                             <FontAwesomeIcon className='ficon' icon={faTrash} size="2x" />
                         </div>
                          }
                         
                         {editActive &&
-                        <div className='buttonAndIcon'>
-                            <button className='editButton detailsButton' onClick={submitHandler}>Submit</button>
+                        <div onClick={submitHandler} className='buttonAndIcon'>
+                            <button className='editButton detailsButton'>Submit</button>
                             <FontAwesomeIcon className='ficon' icon={faPaperPlane} size="2x" />
                         </div>
                          }
 
                         {editActive && 
-                        <div className='buttonAndIcon'>
-                            <button className='editButton detailsButton' onClick={editHandler}>Cancel</button>
+                        <div onClick={editHandler} className='buttonAndIcon'>
+                            <button className='editButton detailsButton'>Cancel</button>
                             <FontAwesomeIcon className='ficon' icon={faArrowRotateLeft} size="2x" />
                         </div>
                         
@@ -264,11 +264,12 @@ const BugDetailPanel = (props) =>{
                         {!editActive && <span className='formSpan'>{bugData.bug.bug.assignedTo}</span>}
                     
                         <label htmlFor='isFixedInput' className='form-label'>Status:</label>
-                        {editActive && <input onChange={statusHandler} id='isFixedInput' name='isFixedInput' className='form-input' type='text' defaultValue={bugData.bug.bug.isFixed}></input>}
-                        {!editActive && <span className='formSpan'>{bugData.bug.bug.isFixed}</span>}
+                        
+                        {editActive && <input onChange={statusHandler} id='isFixedInput' name='isFixedInput' className='form-input' type='text' defaultValue={ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed' }></input>}
+                        {!editActive && <span className='formSpan'>{ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed'}</span>}
                        
-                    
-                        <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>
+                        {bugData.bug.bug.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
+                        {!bugData.bug.bug.dateFixed && editActive && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
                         {editActive && <input onChange={dateFixedHandler} id='dateFixedInput' name='dateFixedInput' className='form-input' type='text' defaultValue={bugData.bug.bug.dateFixed}></input>}
                         {!editActive && <span className='formSpan'>{bugData.bug.bug.dateFixed}</span>}
                 

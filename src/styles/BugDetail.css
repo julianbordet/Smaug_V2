@@ -9,16 +9,23 @@
     margin-right: 3rem;
     padding-bottom: 3rem;
     border-radius: 10px;
+
+    -webkit-box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73); 
+    box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73);
+
+    border: 1px solid black;
 }
 
 .formRow{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 3rem;
-    font-size: 1.5rem;
-    background-color: rgba(145, 142, 142, 0.2);
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    /*background-color: rgba(145, 142, 142, 0.2);*/
     padding: 20px 20px;
-    width:70%
+    width:100%
 
 }
 
@@ -29,6 +36,8 @@
 
 .form-label{
     margin-right: 0.5rem;
+    font-weight: 900;
+    font-size: 1.5rem;
 
     /*Make text unselectable*/
     -webkit-user-select: none; /* Safari */        
@@ -39,6 +48,8 @@
 
 .formSpan{
     margin-right: 4rem;
+    font-size: 1.5rem;
+    font-weight: 500;
 
     /*Make text unselectable*/
     -webkit-user-select: none; /* Safari */        
@@ -70,7 +81,8 @@
     margin-top: 2rem;
     display: flex;
     justify-content: flex-start;
-    background-color: rgba(145, 142, 142, 0.5);
+    /*background-color: rgba(145, 142, 142, 0.5);*/
+    background-color: rgb(172, 164, 164);
     padding: 15px 15px;
     width: 100%
     
