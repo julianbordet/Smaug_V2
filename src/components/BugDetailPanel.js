@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchSpecificBugData, updateBug, deleteBug } from '../store/BugActions'
 import '../styles/BugDetail.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane, faArrowRotateLeft, faFilePen, faTrash  } from '@fortawesome/free-solid-svg-icons'
 
 const BugDetailPanel = (props) =>{
 
@@ -192,10 +194,38 @@ const BugDetailPanel = (props) =>{
                 <form className='bugDetailForm'>
 
                     <div className='buttonsContainer'>
-                        {!editActive && <button className='editButton detailsButton' onClick={editHandler}>EDIT</button>}
-                        {!editActive && <button className='editButton detailsButton' onClick={deleteHandler}>DELETE</button>}
-                        {editActive && <button className='submitButton detailsButton' onClick={submitHandler}>Submit</button>}
-                        {editActive && <button className='cancelButton detailsButton' onClick={editHandler}>Cancel</button>}
+                        
+                            {!editActive && 
+                            <div className='buttonAndIcon'>
+                                <button className='editButton detailsButton' onClick={editHandler}>EDIT</button>
+                                <FontAwesomeIcon className='ficon' icon={faFilePen} size="2x" />
+                                
+
+                            </div>
+                            }
+                            
+                        {!editActive &&
+                        <div className='buttonAndIcon'>
+                            <button className='editButton detailsButton' onClick={deleteHandler}>DELETE</button>
+                            <FontAwesomeIcon className='ficon' icon={faTrash} size="2x" />
+                        </div>
+                         }
+                        
+                        {editActive &&
+                        <div className='buttonAndIcon'>
+                            <button className='editButton detailsButton' onClick={submitHandler}>Submit</button>
+                            <FontAwesomeIcon className='ficon' icon={faPaperPlane} size="2x" />
+                        </div>
+                         }
+
+                        {editActive && 
+                        <div className='buttonAndIcon'>
+                            <button className='editButton detailsButton' onClick={editHandler}>Cancel</button>
+                            <FontAwesomeIcon className='ficon' icon={faArrowRotateLeft} size="2x" />
+                        </div>
+                        
+                        }
+
                     </div>
 
                     <div className='formRow'>

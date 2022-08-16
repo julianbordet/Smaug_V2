@@ -78,33 +78,54 @@
 }
 
 .detailsButton{
-    border-radius: 5px;
-    font-size: 1.5rem;
-    color:white;
-
-    -webkit-box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73); 
-    box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73);
-
+    margin-right: 5px;
 }
 
-.detailsButton:hover{
+.buttonAndIcon{
+    background-color: #212f3d;
+    -webkit-box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73); 
+    box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73);
+    border-radius: 10px;
+    padding: 10px 30px;
+    color:white;
+    margin-right: 20px;
+}
+
+
+
+.editButton{
+    color: inherit;
+    background-color: #212f3d;
+    border: none;
+    font-size: 2rem;
+}
+
+.ficon{
+    color:inherit;
+}
+
+.buttonAndIcon:hover{
+    color: #d5b038;
     cursor: pointer;
 }
 
-.editButton{
-    background-color: #212f3d;
-    padding: 10px 15px;
-    margin-left: 2rem;
+
+.detailsButton:hover{
+    cursor: pointer;
+    color: #d5b038;
 }
 
+
+
+
 .cancelButton{
-    background-color: #f0466e;
+    background-color: #ec3560;
     padding: 10px 15px;
     margin-left: 2rem;
 }
 
 .submitButton{
-    background-color: #0f8cb4;
+    background-color: #038857;
     padding: 10px 15px;
     margin-left: 2rem;
 
