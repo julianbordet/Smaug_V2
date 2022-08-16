@@ -24,8 +24,13 @@ const MyProjectsPanel = (props) => {
     return (
         
             <div className={classes}>
+
+                    <div className='sectionTitle'>
+                         <h1>MY PROJECTS</h1>
+                    </div>
+
                 {projectData.projects.projects && projectData && <div>
-                    <h1>My Projects:</h1>
+                    
                     <div className=''>
                         <table>
                             <tbody>
