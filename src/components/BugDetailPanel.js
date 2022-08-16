@@ -1,7 +1,7 @@
 import { useLocation, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchSpecificBugData, updateBug } from '../store/BugActions'
+import { fetchSpecificBugData, updateBug, deleteBug } from '../store/BugActions'
 import '../styles/BugDetail.css'
 
 const BugDetailPanel = (props) =>{
@@ -34,7 +34,7 @@ const BugDetailPanel = (props) =>{
 
 
      //bug form info
-     const [title, setTitle] = useState('');
+     const [title, setTitle] = useState();
      const [project, setProject] = useState();
      const [severity, setSeverity] = useState();
      const [priority, setPriority] = useState();
@@ -172,16 +172,13 @@ const BugDetailPanel = (props) =>{
         updateBug(bug)
 
         //redirect to myBugs
-        //history.push(`/mybugs`)
+        history.push(`/dashboard`)
     }
 
-
-
-
-
-
-
-
+    const deleteHandler = () =>{
+        deleteBug(bugData.bug.bug.bugId)
+        history.push(`/dashboard`)
+    }
 
 
 
@@ -196,6 +193,7 @@ const BugDetailPanel = (props) =>{
 
                     <div className='buttonsContainer'>
                         {!editActive && <button className='editButton detailsButton' onClick={editHandler}>EDIT</button>}
+                        {!editActive && <button className='editButton detailsButton' onClick={deleteHandler}>DELETE</button>}
                         {editActive && <button className='submitButton detailsButton' onClick={submitHandler}>Submit</button>}
                         {editActive && <button className='cancelButton detailsButton' onClick={editHandler}>Cancel</button>}
                     </div>

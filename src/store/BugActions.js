@@ -93,8 +93,28 @@ export const updateBug = (bug) =>{
 
         postData();
 
-    
+}
 
-    
+export const deleteBug = (bugId) =>{
+
+    const deleteData = async() =>{
+
+        const url = `http://localhost:8080/api/bugs/${bugId}`;
+        //console.log(url)
+       
+
+        //console.log(JSON.stringify(bug))
+
+        
+        const response = await fetch(url, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error('Could not fetch bug data!');
+          }
+    };
+
+    deleteData();
 
 }
