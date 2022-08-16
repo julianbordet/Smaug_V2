@@ -155,6 +155,10 @@ const BugDetailPanel = (props) =>{
             bug.isFixed = bugData.bug.bug.isFixed
         }
 
+        if(bug.isFixed === 'Fixed'){
+            bug.isFixed = 1;
+        }
+
         if(bug.dateFixed === undefined){
             bug.dateFixed =bugData.bug.bug.dateFixed
         }
@@ -268,7 +272,7 @@ const BugDetailPanel = (props) =>{
                         {!editActive && <span className='formSpan'>{ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed'}</span>}
                        
                         </div>
-                        
+
                     <div className='formRow'>
                         {bugData.bug.bug.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
                         {!bugData.bug.bug.dateFixed && editActive && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
