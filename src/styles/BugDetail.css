@@ -1,0 +1,107 @@
+.bugDetailForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*max-width: 30%;*/
+    
+
+    
+}
+
+.formRow{
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    background-color: rgba(145, 142, 142, 0.2);
+    padding: 20px 20px;
+    width:70%
+
+}
+
+.form-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label{
+    margin-right: 0.5rem;
+
+    /*Make text unselectable*/
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.formSpan{
+    margin-right: 4rem;
+
+    /*Make text unselectable*/
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.form-input{
+    margin-right: 1.5rem;
+    border-radius: 5px;
+    
+    
+}
+
+.inactive{
+    background-color: transparent;
+    border: none;
+
+}
+
+.inactive:focus{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.buttonsContainer{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgba(145, 142, 142, 0.5);
+    padding: 15px 15px;
+    
+    
+}
+
+.detailsButton{
+    border-radius: 5px;
+    font-size: 1.5rem;
+    color:white;
+
+    -webkit-box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73); 
+    box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73);
+
+}
+
+.detailsButton:hover{
+    cursor: pointer;
+}
+
+.editButton{
+    background-color: #053c4b;
+    padding: 10px 15px;
+    margin-left: 2rem;
+}
+
+.cancelButton{
+    background-color: #f0466e;
+    padding: 10px 15px;
+    margin-left: 2rem;
+}
+
+.submitButton{
+    background-color: #0f8cb4;
+    padding: 10px 15px;
+    margin-left: 2rem;
+
+}
