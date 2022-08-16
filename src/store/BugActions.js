@@ -65,3 +65,7 @@ export const fetchSpecificBugData = (param) =>{
     }
 
 }
+
+export const updateBug = () =>{
+    
+}
