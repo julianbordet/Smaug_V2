@@ -10,14 +10,16 @@ const MyBugsPanel = (props) => {
 
     const classes = props.className;
     const history = useHistory();
-    const dispatch = useDispatch()
+   // const dispatch = useDispatch()
 
-    const bugData = useSelector( (state) => state.fetchChartData)
+    const bugData = useSelector( (state) => state.fetchBugData.bugs)
 
+    /*
     useEffect( () =>{
         dispatch(fetchBugData());
     }
     ,[dispatch])
+    */
 
 
     const selectBugHandler = (bugId) =>{
@@ -36,7 +38,7 @@ const MyBugsPanel = (props) => {
                 <h1>MY BUGS</h1>
             </div>
 
-            {bugData.bugs.bugs && <div className='table-container'>
+            {bugData && <div className='table-container'>
                 <table>
                     <tbody>
                         <tr>
@@ -48,7 +50,7 @@ const MyBugsPanel = (props) => {
                             <td>Fix Due Date</td>
                         </tr>
                         
-                        {bugData.bugs.bugs.map( (bug) =>(
+                        {bugData.map( (bug) =>(
                             <tr key={Math.random()} onClick={() =>{selectBugHandler(bug.bugId)}}>
                                 <td key={Math.random()}>{bug.bugId}</td>
                                 <td key={Math.random()}>{bug.title}</td>

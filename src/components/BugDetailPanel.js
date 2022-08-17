@@ -6,7 +6,7 @@ const BugDetailPanel = (props) =>{
     const classes = props.className;
 
     const dispatch = useDispatch();
-    const bugData = useSelector( (state) => state.fetchChartData)
+    const bugData = useSelector( (state) => state.fetchBugData)
 
 
     useEffect( ()=>{
