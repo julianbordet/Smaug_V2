@@ -5,6 +5,7 @@ import { fetchSpecificBugData, updateBug, deleteBug } from '../store/BugActions'
 import '../styles/BugDetail.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faArrowRotateLeft, faFilePen, faTrash  } from '@fortawesome/free-solid-svg-icons'
+import { processBugForUpdate } from '../util/ProcessUpdatedBugData'
 
 const BugDetailPanel = (props) =>{
 
@@ -12,22 +13,26 @@ const BugDetailPanel = (props) =>{
 
     const history = useHistory();
     const location = useLocation(window.location.search);
-    //const queryParams = new URLSearchParams(location.search)
-    //const chal = queryParams.has('detail')
-    //const wasabi = queryParams.get('detail')
     const param = location.search;
     const paramValue = param.substring(1);
+    const dispatch = useDispatch();
+
+    const bugData = useSelector( (state) => state.fetchChartData)
+
+    const [title, setTitle] = useState();
+    const [project, setProject] = useState();
+    const [severity, setSeverity] = useState();
+    const [priority, setPriority] = useState();
+    const [dateCreated, setDateCreated] = useState();
+    const [dueDate, setDueDate] = useState();
+    const [assignedTo, setAssignedTo] = useState();
+    const [status, setStatus] = useState();
+    const [dateFixed, setDateFixed] = useState();
+    const [description, setDescription] = useState();
+    const [steps, setSteps] = useState();
 
     const [editActive, setEditActive] = useState(false);
 
-
-   
-
-
-
-    const dispatch = useDispatch()
-
-    const bugData = useSelector( (state) => state.fetchChartData)
 
     useEffect( () =>{
         dispatch(fetchSpecificBugData(paramValue));
@@ -35,26 +40,10 @@ const BugDetailPanel = (props) =>{
     ,[dispatch])
 
 
-     //bug form info
-     const [title, setTitle] = useState();
-     const [project, setProject] = useState();
-     const [severity, setSeverity] = useState();
-     const [priority, setPriority] = useState();
-     const [dateCreated, setDateCreated] = useState();
-     const [dueDate, setDueDate] = useState();
-     const [assignedTo, setAssignedTo] = useState();
-     const [status, setStatus] = useState();
-     const [dateFixed, setDateFixed] = useState();
-     const [description, setDescription] = useState();
-     const [steps, setSteps] = useState();
-
-
 
     const editHandler = () =>{
         setEditActive(!editActive);
     }
-
-  
 
     const titleHandler = (event) =>{
         setTitle(event.target.value)
@@ -96,15 +85,9 @@ const BugDetailPanel = (props) =>{
         setSteps(event.target.value)
     }
 
-
-
     const submitHandler = (event) =>{
         event.preventDefault();
 
-        /*if(stateUseStateParaElField === null){
-            stateUseStateParaElField = bugdata.bug.bug....
-        }
-        */
         const bug = {
             title : title,
             projectId : project,
@@ -121,61 +104,9 @@ const BugDetailPanel = (props) =>{
             bugId : bugData.bug.bug.bugId
         }
 
+        const processedBug = processBugForUpdate(bug, bugData);
 
-
-        if(bug.title === undefined){
-            bug.title = bugData.bug.bug.title
-        }
-        
-        if(bug.projectId === undefined){
-            bug.projectId = bugData.bug.bug.projectId
-        }
-
-        if(bug.severity === undefined){
-           bug.severity = bugData.bug.bug.severity
-        }
-
-        if(bug.priority === undefined){
-            bug.priority = bugData.bug.bug.priority
-        }
-
-        if(bug.dateCreated === undefined){
-            bug.dateCreated = bugData.bug.bug.dateCreated
-        }
-
-        if(bug.dueDate === undefined){
-           bug.dueDate = bugData.bug.bug.dueDate
-        }
-
-        if(bug.assignedTo === undefined){
-            bug.assignedTo = bugData.bug.bug.assignedTo
-        }
-
-        if(bug.isFixed === undefined){
-            bug.isFixed = bugData.bug.bug.isFixed
-        }
-
-        if(bug.isFixed === 'Fixed'){
-            bug.isFixed = 1;
-        }
-
-        if(bug.dateFixed === undefined){
-            bug.dateFixed =bugData.bug.bug.dateFixed
-        }
-
-        if(bug.description === undefined){
-            bug.description = bugData.bug.bug.description
-        }
-
-        if(bug.stepsToReproduce === undefined){
-            bug.stepsToReproduce = bugData.bug.bug.stepsToReproduce
-        }
-
-        
-        
-
-        
-        updateBug(bug)
+        updateBug(processedBug)
 
         //redirect to myBugs
         history.push(`/dashboard`)
@@ -191,44 +122,35 @@ const BugDetailPanel = (props) =>{
     return(
         <div className={classes}>
 
-            
-            
             {bugData.bug.bug && 
             
                 <form className='bugDetailForm'>
 
                     <div className='buttonsContainer'>
                         
-                            {!editActive && 
-                            <div onClick={editHandler} className='buttonAndIcon'>
+                        {!editActive && 
+                        <div onClick={editHandler} className='buttonAndIcon'>
                                 <button className='editButton detailsButton' >EDIT</button>
                                 <FontAwesomeIcon className='ficon' icon={faFilePen} size="2x" />
-                                
-
-                            </div>
-                            }
+                        </div>}
                             
                         {!editActive &&
                         <div onClick={deleteHandler} className='buttonAndIcon'>
                             <button className='editButton detailsButton'>DELETE</button>
                             <FontAwesomeIcon className='ficon' icon={faTrash} size="2x" />
-                        </div>
-                         }
+                        </div>}
                         
                         {editActive &&
                         <div onClick={submitHandler} className='buttonAndIcon'>
                             <button className='editButton detailsButton'>Submit</button>
                             <FontAwesomeIcon className='ficon' icon={faPaperPlane} size="2x" />
-                        </div>
-                         }
+                        </div>}
 
                         {editActive && 
                         <div onClick={editHandler} className='buttonAndIcon'>
                             <button className='editButton detailsButton'>Cancel</button>
                             <FontAwesomeIcon className='ficon' icon={faArrowRotateLeft} size="2x" />
-                        </div>
-                        
-                        }
+                        </div>}
 
                     </div>
 
@@ -256,19 +178,24 @@ const BugDetailPanel = (props) =>{
 
                         <label htmlFor='dateCreatedInput' className='form-label'>Date created:</label>
                         <span className='formSpan'>{bugData.bug.bug.dateCreated}</span>
-                        
                     
                         <label htmlFor='dueDateInput' className='form-label'>Due date:</label>
-                        {editActive && <input onChange={dueDateHandler} id='dueDateInput' name='dueDateInput' className='form-input' type='text' defaultValue={bugData.bug.bug.dueDate}></input>}
+                        {editActive && <input onChange={dueDateHandler} id='dueDateInput' name='dueDateInput' className='form-input' type='date' defaultValue={bugData.bug.bug.dueDate}></input>}
                         {!editActive && <span className='formSpan'>{bugData.bug.bug.dueDate}</span>}
                   
                         <label htmlFor='assignedToInput' className='form-label'>Assigned to:</label>
-                        {editActive && <input onChange={assignedToHandler} id='assignedToInput' name='assignedToInput' className='form-input' type='text' defaultValue={bugData.bug.bug.assignedTo}></input>}
+                        {editActive && <select onChange={assignedToHandler} id='assignedToInput' name='assignedToInput' className='form-input' type='text' defaultValue={bugData.bug.bug.assignedTo}>
+                            <option value='jbdev'>jbdev</option>
+                            <option value='mary'>mary</option>
+                            </select>}
                         {!editActive && <span className='formSpan'>{bugData.bug.bug.assignedTo}</span>}
                     
                         <label htmlFor='isFixedInput' className='form-label'>Status:</label>
                         
-                        {editActive && <input onChange={statusHandler} id='isFixedInput' name='isFixedInput' className='form-input' type='text' defaultValue={ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed' }></input>}
+                        {editActive && <select onChange={statusHandler} id='isFixedInput' name='isFixedInput' className='form-input' type='text' defaultValue={ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed' }>
+                                <option value='Pending'>Pending</option>
+                                <option value='Fixed'>Fixed</option>
+                            </select>}
                         {!editActive && <span className='formSpan'>{ (bugData.bug.bug.isFixed === 0) ? 'Pending' : 'Fixed'}</span>}
                        
                         </div>
@@ -276,7 +203,7 @@ const BugDetailPanel = (props) =>{
                     <div className='formRow'>
                         {bugData.bug.bug.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
                         {!bugData.bug.bug.dateFixed && editActive && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
-                        {editActive && <input onChange={dateFixedHandler} id='dateFixedInput' name='dateFixedInput' className='form-input' type='text' defaultValue={bugData.bug.bug.dateFixed}></input>}
+                        {editActive && <input onChange={dateFixedHandler} id='dateFixedInput' name='dateFixedInput' className='form-input' type='date' defaultValue={bugData.bug.bug.dateFixed}></input>}
                         {!editActive && <span className='formSpan'>{bugData.bug.bug.dateFixed}</span>}
                 
                     </div>
@@ -298,12 +225,9 @@ const BugDetailPanel = (props) =>{
                     </div>
                  
                 </form>
-                    
-
-            
+                        
             }
         
-
         </div>
     )
 }
