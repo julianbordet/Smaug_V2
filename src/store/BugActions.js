@@ -1,4 +1,4 @@
-import { ChartSliceActions } from "./ChartSlice";
+import { BugSliceActions } from "./BugSlice";
 
 export const fetchBugData = () =>{
 
@@ -18,9 +18,9 @@ export const fetchBugData = () =>{
         try{
             const bugData = await fetchData();
             dispatch(
-                ChartSliceActions.setBugs({
-                    bugs : bugData
-                })
+                BugSliceActions.setBugs(
+                    bugData
+                )
             );
         } catch (error){
 
@@ -51,7 +51,7 @@ export const fetchSpecificBugData = (param) =>{
         try{
             const bugData = await fetchData();
             dispatch(
-                ChartSliceActions.getSingleBug({
+                BugSliceActions.getSingleBug({
                     bug : bugData
                 })
             );

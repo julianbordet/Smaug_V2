@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ChartSlice from "./ChartSlice";
+import BugSlice from "./BugSlice";
 import ProjectSlice from "./ProjectSlice";
 
 const store = configureStore({
-    reducer: {fetchChartData: ChartSlice.reducer, fetchProjectData: ProjectSlice.reducer}
+    reducer: {fetchChartData: BugSlice.reducer, fetchProjectData: ProjectSlice.reducer}
 })
 
 export default store

@@ -31,7 +31,7 @@ const ProcessDataForDueNotDueChart = (chartData) => {
     let bugsDue = 0;
     let bugsNotDue = 0;
 
-    chartData.forEach(bug => {
+    chartData.map(bug => {
         if (isBugDue(bug)) {
             bugsDue++;
         } else {
@@ -81,7 +81,7 @@ const ProcessDataForSeverityChart = (chartData) => {
     let sevMed = 0;
     let sevLow = 0;
 
-    chartData.forEach((bug) => {
+    chartData.map((bug) => {
         if (bug.severity === "CRITICAL") {
             sevCrit++;
         } else if (bug.severity === "HIGH") {
@@ -138,7 +138,7 @@ const ProcessDataForPriorityChart = (chartData) => {
     let prioMed = 0;
     let prioLow = 0;
 
-    chartData.forEach((bug) => {
+    chartData.map((bug) => {
         if (bug.priority === "CRITICAL") {
             prioCrit++;
         } else if (bug.priority === "HIGH") {

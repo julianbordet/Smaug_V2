@@ -13,7 +13,8 @@ const DashboardPanel = (props) =>{
 
     const classes = props.className;
 
-    const bugData = useSelector( (state) => state.fetchChartData)
+    const bugData = useSelector( (state) => state.fetchChartData.bugs)
+
     const [data1, setData1] = useState();
     const [data2, setData2] = useState();
     const [data3, setData3] = useState();
@@ -30,16 +31,21 @@ const DashboardPanel = (props) =>{
 
     useEffect(()=>{
         
-        if(bugData.bugs.bugs){
+        if(bugData){
             
-            const tempData1 = drawChartForBugsDueNotDue(bugData.bugs.bugs);
+        
+            
+            const tempData1 = drawChartForBugsDueNotDue(bugData);
             setData1(tempData1);
 
-            const tempData2 = drawSeverityChart(bugData.bugs.bugs);
+            const tempData2 = drawSeverityChart(bugData);
             setData2(tempData2);
 
-            const tempData3 = drawPriorityChart(bugData.bugs.bugs);
+            const tempData3 = drawPriorityChart(bugData);
             setData3(tempData3);
+            
+        
+           console.log(bugData)
 
             //TODO CHART4
         }
@@ -54,13 +60,13 @@ const DashboardPanel = (props) =>{
 
                 <div className='FlexRow'>
 
-              {bugData.bugs.bugs && data1 && <Card className='dashboard-card'>
+              {bugData && data1 && <Card className='dashboard-card'>
                         <h3>Bugs due:</h3>
                         <DoughnutChart chartData={data1} />
                          </Card>
                 }
 
-                {bugData.bugs.bugs && data2 && <Card className='dashboard-card'>
+                {bugData && data2 && <Card className='dashboard-card'>
                         <h3>Bugs Severity</h3>
                         <DoughnutChart chartData={data2} />
                          </Card>
@@ -70,7 +76,7 @@ const DashboardPanel = (props) =>{
 
                 <div className='FlexRow'>
 
-                {bugData.bugs.bugs && data3 && <Card className='dashboard-card'>
+                {bugData && data3 && <Card className='dashboard-card'>
                         <h3>Bugs Priority</h3>
                         <DoughnutChart chartData={data3} />
                          </Card>
