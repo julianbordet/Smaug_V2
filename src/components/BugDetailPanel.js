@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useHistory } from 'react-router-dom'
-import { fetchBugByBugId, updateBug, deleteBug } from '../store/BugActions'
+import { fetchBugByBugId, updateBug, deleteBug } from '../store/BugSliceAsyncActions'
 import { BugSliceActions } from "../store/BugSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faArrowRotateLeft, faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -69,7 +69,7 @@ const BugDetailPanel = (props) => {
 
                         {editActive &&
                             <div className='buttonAndIcon'>
-                                <button className='editButton detailsButton'>Submit</button>
+                                <button className='editButton detailsButton' type='submit'>Submit</button>
                                 <FontAwesomeIcon className='ficon' icon={faPaperPlane} size="2x" />
                             </div>}
 

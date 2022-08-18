@@ -97,3 +97,4 @@ export const deleteBug = (bug) =>{
     sendDeleteRequest();
 
 }
+

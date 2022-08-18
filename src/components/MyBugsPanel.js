@@ -3,7 +3,7 @@ import '../styles/MainPanel.css';
 import '../styles/MyBugsPanel.css';
 import "../styles/TableStyles.css"
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBugData } from '../store/BugActions';
+import { fetchBugData } from '../store/BugSliceAsyncActions';
 import { useHistory } from 'react-router-dom';
 
 const MyBugsPanel = (props) => {
@@ -29,14 +29,22 @@ const MyBugsPanel = (props) => {
 
     }
 
+    const newBugHandler = () =>{
+        history.push(`/mybugs/newbug`)
+    }
+
    
 
     return (
-        <div className={classes}>
+        <div className={`${classes} panelContainer`} >
 
             <div className='sectionTitle'>
                 <h1>MY BUGS</h1>
             </div>
+
+            <div className='buttonsAndTableContainer'>
+                <button className='newBugButton' onClick={newBugHandler}>NEW BUG</button>
+            
 
             {bugData && <div className='table-container'>
                 <table>
@@ -63,7 +71,10 @@ const MyBugsPanel = (props) => {
                     </tbody>
                 
                 </table>
-            </div>}
+
+                </div>
+            }
+            </div>
 
            
 

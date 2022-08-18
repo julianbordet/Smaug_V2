@@ -1,5 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const newBug = {
+    bugId : "",
+    title : "",
+    projectId : "",
+    severity : "",
+    priority : "",
+    dateCreated : "",
+    dueDate : "",
+    assignedTo : "",
+    isFixed : "",
+    dateFixed : "",
+    description : "",
+    stepsToReproduce : "",
+    createdBy : ""
+}; 
+
 const BugSlice = createSlice({
     name: 'bugs',
     initialState: {
@@ -66,6 +82,9 @@ const BugSlice = createSlice({
         },
         updateBugDateFixed(state, action){
             state.inMemoryBug.dateFixed = action.payload;
+        },
+        setupNewBug(state){
+            state.inMemoryBug = newBug;
         }
     }
 })

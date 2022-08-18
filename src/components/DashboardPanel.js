@@ -4,7 +4,7 @@ import { useEffect, useState} from 'react'
 import { useDispatch, useSelector} from 'react-redux';
 import Card from './UI/Card';
 import DoughnutChart from '../util/DoughnutChart';
-import { fetchBugData } from '../store/BugActions';
+import { fetchBugData } from '../store/BugSliceAsyncActions';
 import {drawChartForBugsDueNotDue, drawSeverityChart, drawPriorityChart} from '../util/ChartUtil'
 
 
