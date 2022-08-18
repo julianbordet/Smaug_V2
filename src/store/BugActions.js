@@ -3,12 +3,12 @@ import { BugSliceActions } from "./BugSlice";
 export const fetchBugData = () =>{
 
     return async (dispatch) =>{
-        const fetchData = async() =>{
+        const sendBugListGetRequest = async() =>{
             const response = await fetch('http://localhost:8080/api/bugs');
 
             if (!response.ok) {
                 throw new Error('Could not fetch bug data!');
-              }
+            }
 
             const data = await response.json();
 
@@ -16,12 +16,8 @@ export const fetchBugData = () =>{
         };
 
         try{
-            const bugData = await fetchData();
-            dispatch(
-                BugSliceActions.updateInMemoryBugList(
-                    bugData
-                )
-            );
+            const bugList = await sendBugListGetRequest();
+            dispatch(BugSliceActions.updateInMemoryBugList(bugList));
         } catch (error){
 
         }
@@ -33,7 +29,7 @@ export const fetchBugData = () =>{
 export const fetchBugByBugId = (param) =>{
 
     return async (dispatch) =>{
-        const fetchData = async() =>{
+        const sendBugGetRequestWithBugId = async() =>{
 
             const url = `http://localhost:8080/api/bugs/${param}`;
             const response = await fetch(url);
@@ -48,8 +44,8 @@ export const fetchBugByBugId = (param) =>{
 
         try{
 
-            const bugData = await fetchData();
-            dispatch(BugSliceActions.updateInMemoryBug(bugData));
+            const bug = await sendBugGetRequestWithBugId();
+            dispatch(BugSliceActions.updateInMemoryBug(bug));
 
         } catch (error){
 
