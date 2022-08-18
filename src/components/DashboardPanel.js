@@ -13,7 +13,7 @@ const DashboardPanel = (props) =>{
 
     const classes = props.className;
 
-    const bugData = useSelector( (state) => state.fetchBugData.bugs)
+    const bugData = useSelector( (state) => state.fetchBugData.bugListFetchedFromDB)
 
     const [data1, setData1] = useState();
     const [data2, setData2] = useState();

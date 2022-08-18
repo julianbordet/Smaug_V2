@@ -12,7 +12,7 @@ const MyBugsPanel = (props) => {
     const history = useHistory();
    // const dispatch = useDispatch()
 
-    const bugData = useSelector( (state) => state.fetchBugData.bugs)
+    const bugData = useSelector( (state) => state.fetchBugData.bugListFetchedFromDB)
 
     /*
     useEffect( () =>{

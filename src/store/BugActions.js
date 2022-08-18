@@ -18,7 +18,7 @@ export const fetchBugData = () =>{
         try{
             const bugData = await fetchData();
             dispatch(
-                BugSliceActions.setBugs(
+                BugSliceActions.updateInMemoryBugList(
                     bugData
                 )
             );
@@ -30,13 +30,12 @@ export const fetchBugData = () =>{
 
 }
 
-export const fetchSpecificBugData = (param) =>{
+export const fetchBugByBugId = (param) =>{
 
     return async (dispatch) =>{
         const fetchData = async() =>{
 
             const url = `http://localhost:8080/api/bugs/${param}`;
-
             const response = await fetch(url);
 
             if (!response.ok) {
@@ -44,17 +43,14 @@ export const fetchSpecificBugData = (param) =>{
               }
 
             const data = await response.json();
-
             return data;
         };
 
         try{
+
             const bugData = await fetchData();
-            dispatch(
-                BugSliceActions.getSingleBug({
-                    bug : bugData
-                })
-            );
+            dispatch(BugSliceActions.updateInMemoryBug(bugData));
+
         } catch (error){
 
         }
@@ -65,7 +61,7 @@ export const fetchSpecificBugData = (param) =>{
 
 export const updateBug = (bug) =>{
 
-        const postData = async() =>{
+        const sendPutRequest = async() =>{
 
             const url = `http://localhost:8080/api/bugs`;
                   
@@ -83,15 +79,15 @@ export const updateBug = (bug) =>{
               }
         };
 
-        postData();
+        sendPutRequest();
 
 }
 
-export const deleteBug = (bugId) =>{
+export const deleteBug = (bug) =>{
 
-    const deleteData = async() =>{
+    const sendDeleteRequest = async() =>{
 
-        const url = `http://localhost:8080/api/bugs/${bugId}`;
+        const url = `http://localhost:8080/api/bugs/${bug.bugId}`;
      
         const response = await fetch(url, {
             method: "DELETE"
@@ -102,6 +98,6 @@ export const deleteBug = (bugId) =>{
           }
     };
 
-    deleteData();
+    sendDeleteRequest();
 
 }
