@@ -28,12 +28,12 @@ function App() {
         <MyBugs />
       </Route>
 
-      <Route path={pages.bugDetailPage}>
-        <BugDetail />
+      <Route path={pages.newBugPage} exact>
+        <NewBug />
       </Route>
 
-      <Route path={pages.newBugPage}>
-        <NewBug />
+      <Route path={pages.bugDetailPage} exact>
+        <BugDetail />
       </Route>
 
       <Route path={pages.myProjectsPage} exact>

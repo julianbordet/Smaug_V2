@@ -3,7 +3,7 @@ const pages = {
     dashboardPage : '/dashboard',
     myBugsPage : '/mybugs',
     bugDetailPage : '/mybugs/:bugId',
-    newBugPage : '/newbug',
+    newBugPage : '/mybugs/newbug',
     myProjectsPage : '/myprojects',
     projectDetailPage : '/myprojects/:projectId',
     rolesPage : '/roles',
