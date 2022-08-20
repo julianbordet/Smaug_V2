@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const newBug = {
-    bugId : "",
+    bugId : 0,
     title : "",
     projectId : "",
     severity : "",
     priority : "",
-    dateCreated : "",
+    dateCreated : null,
     dueDate : "",
     assignedTo : "",
     isFixed : "",
@@ -76,6 +76,7 @@ const BugSlice = createSlice({
         },
         updateBugCreatedBy(state, action){
             state.inMemoryBug.createdBy = action.payload;
+          
         },
         updateBugId(state, action){
             state.inMemoryBug.bugId = action.payload;

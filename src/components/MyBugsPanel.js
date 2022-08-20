@@ -3,7 +3,7 @@ import '../styles/MainPanel.css';
 import '../styles/MyBugsPanel.css';
 import "../styles/TableStyles.css"
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBugData } from '../store/BugSliceAsyncActions';
+import { fetchBugList } from '../store/BugSliceAsyncActions';
 import { useHistory } from 'react-router-dom';
 
 const MyBugsPanel = (props) => {
@@ -16,7 +16,7 @@ const MyBugsPanel = (props) => {
 
     
     useEffect( () =>{
-        dispatch(fetchBugData());
+        dispatch(fetchBugList());
     }
     ,[dispatch])
     

@@ -4,7 +4,7 @@ import { useEffect, useState} from 'react'
 import { useDispatch, useSelector} from 'react-redux';
 import Card from './UI/Card';
 import DoughnutChart from '../util/DoughnutChart';
-import { fetchBugData } from '../store/BugSliceAsyncActions';
+import { fetchBugList } from '../store/BugSliceAsyncActions';
 import {drawChartForBugsDueNotDue, drawSeverityChart, drawPriorityChart} from '../util/ChartUtil'
 
 
@@ -24,7 +24,7 @@ const DashboardPanel = (props) =>{
     const dispatch = useDispatch();
     
     useEffect( () =>{
-        dispatch(fetchBugData());
+        dispatch(fetchBugList());
     }
     ,[dispatch])
 
@@ -45,7 +45,7 @@ const DashboardPanel = (props) =>{
             setData3(tempData3);
             
         
-           console.log(bugData)
+           //console.log(bugData)
 
             //TODO CHART4
         }

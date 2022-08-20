@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { BugSliceActions } from "../store/BugSlice";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faArrowRotateLeft, faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane, faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { postBug } from "../store/BugSliceAsyncActions"
+import { severityOptions, priorityOptions, developerOptions, projectOptions, statusOptions, returnNewBug } from "../util/NewBugSettings"
+import { getTodayInYYYY_MM_DD } from "../util/DateUtil"
+
+import { thunkThing } from "../store/BugSliceAsyncActions";
 
 
 
@@ -15,16 +20,42 @@ const NewBugPanel = (props) => {
     const dispatch = useDispatch();
     const bugSelected = useSelector((state) => state.fetchBugData.inMemoryBug);
 
-    useEffect(()=>{
-        dispatch(BugSliceActions.setupNewBug())
+    useEffect(() => {
+        dispatch(BugSliceActions.setupNewBug());
+
     }
-    ,[])
+        , []);
 
 
     const submitHandler = (event) => {
         event.preventDefault();
 
-        //updateBug(bugSelected)
+        dispatch(BugSliceActions.updateBugDateCreated('2022-05-05 13:00:00'))
+        dispatch(BugSliceActions.updateBugCreatedBy('jbdev'))
+
+        ///POSTBUG(bugSelected)
+
+        /*
+        const theNewBug = returnNewBug(); 
+
+        theNewBug.title = bugSelected.title;
+        theNewBug.assignedTo = bugSelected.assignedTo;
+        theNewBug.createdBy = 'jbdev';
+        theNewBug.dateCreated = '2022-05-05 13:00:00';
+        theNewBug.dateFixed = bugSelected.dateFixed;
+        theNewBug.description = bugSelected.description;
+        theNewBug.dueDate = bugSelected.dueDate;
+        theNewBug.isFixed = bugSelected.isFixed;
+        theNewBug.priority = bugSelected.priority;
+        theNewBug.projectId = bugSelected.projectId;
+        theNewBug.severity = bugSelected.severity;
+        theNewBug.stepsToReproduce = bugSelected.stepsToReproduce;
+        */
+        
+
+        postBug(bugSelected);
+
+
 
         //redirect to myBugs
         history.push(`/dashboard`)
@@ -37,11 +68,11 @@ const NewBugPanel = (props) => {
             <form onSubmit={submitHandler} className='bugDetailForm'>
 
                 <div className='buttonsContainer'>
-  
-                        <div className='buttonAndIcon'>
-                            <button className='editButton detailsButton' type='submit'>Submit</button>
-                            <FontAwesomeIcon className='ficon' icon={faPaperPlane} size="2x" />
-                        </div>
+
+                    <div className='buttonAndIcon'>
+                        <button className='editButton detailsButton' type='submit'>Submit</button>
+                        <FontAwesomeIcon className='ficon' icon={faPaperPlane} size="2x" />
+                    </div>
 
                 </div>
 
@@ -49,44 +80,48 @@ const NewBugPanel = (props) => {
 
                     <label htmlFor='titleInput' className='form-label'>Title:</label>
                     <input onChange={(event) => { dispatch(BugSliceActions.updateBugTitle(event.target.value)) }} id='titleInput' name='titleInput' className='form-input' type='text' defaultValue={bugSelected.title}></input>
-                   
+
 
                     <label htmlFor='projectIdInput' className='form-label'>Project:</label>
                     <input onChange={(event) => { dispatch(BugSliceActions.updateBugProjectId(event.target.value)) }} id='projectIdInput' name='projectIdInput' className='form-input' type='text' defaultValue={bugSelected.projectId}></input>
-               
+
 
                     <label className='form-label'>Severity:</label>
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input' type='text' defaultValue={bugSelected.severity}></input>
-                 
+                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input' type='text' defaultValue={bugSelected.severity}>
+
+
+                    </input>
+
 
                     <label htmlFor='priorityInput' className='form-label'>Priority:</label>
                     <input onChange={(event) => { dispatch(BugSliceActions.updateBugPriority(event.target.value)) }} id='priorityInput' name='priorityInput' className='form-input' type='text' defaultValue={bugSelected.priority}></input>
-                
+
 
                 </div>
 
                 <div className='formRow'>
 
-                    <label htmlFor='dateCreatedInput' className='form-label'>Date created:</label>
-                    <span className='formSpan'>{bugSelected.dateCreated}</span>
-
                     <label htmlFor='dueDateInput' className='form-label'>Due date:</label>
                     <input onChange={(event) => { dispatch(BugSliceActions.updateBugDueDate(event.target.value)) }} id='dueDateInput' name='dueDateInput' className='form-input' type='date' defaultValue={bugSelected.dueDate}></input>
-            
+
 
                     <label htmlFor='assignedToInput' className='form-label'>Assigned to:</label>
-                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugAssignedTo(event.target.value)) }} id='assignedToInput' name='assignedToInput' className='form-input' type='text' defaultValue={bugSelected.assignedTo}>
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugAssignedTo(event.target.value)) }} id='assignedToInput' name='assignedToInput' className='form-input' >
+                        <option value=''>Select</option>
                         <option value='jbdev'>jbdev</option>
                         <option value='mary'>mary</option>
                     </select>
-                 
+
 
                     <label htmlFor='isFixedInput' className='form-label'>Status:</label>
-                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }} id='isFixedInput' name='isFixedInput' className='form-input' type='text' defaultValue={(bugSelected.isFixed === 0) ? 'Pending' : 'Fixed'}>
-                        <option value='Pending'>Pending</option>
-                        <option value='Fixed'>Fixed</option>
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }} id='isFixedInput' name='isFixedInput' className='form-input' type='text'>
+                        {statusOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.text}
+                            </option>
+                        ))}
                     </select>
-                 
+
 
                 </div>
 
@@ -94,15 +129,15 @@ const NewBugPanel = (props) => {
                     {bugSelected.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
                     {!bugSelected.dateFixed && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
                     <input onChange={(event) => { dispatch(BugSliceActions.updateBugDateFixed(event.target.value)) }} id='dateFixedInput' name='dateFixedInput' className='form-input' type='date' defaultValue={bugSelected.dateFixed}></input>
-                   
+
 
                 </div>
 
                 <div className='formRow'>
                     <div className='form-column'>
                         <label htmlFor='descriptionInput' className='form-label'>Description:</label>
-                       <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugDescription(event.target.value)) }} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugSelected.description}></textarea>
-           
+                        <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugDescription(event.target.value)) }} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugSelected.description}></textarea>
+
                     </div>
                 </div>
 
@@ -110,7 +145,7 @@ const NewBugPanel = (props) => {
                     <div className='form-column'>
                         <label htmlFor='stepsToReproduceInput' className='form-label'>Steps to reproduce:</label>
                         <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugStepsToReproduce(event.target.value)) }} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input' type='text' defaultValue={bugSelected.stepsToReproduce}></textarea>
-                   
+
                     </div>
                 </div>
 

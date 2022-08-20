@@ -4,6 +4,7 @@ import Body from "../components/UI/Body";
 import VerticalNavbar from "../components/UI/VerticalNavbar";
 import NewBugPanel from "../components/NewBugPanel";
 
+
 const NewBug = () =>{
 
     return(
