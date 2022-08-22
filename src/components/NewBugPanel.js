@@ -30,32 +30,10 @@ const NewBugPanel = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        dispatch(BugSliceActions.updateBugDateCreated('2022-05-05 13:00:00'))
-        dispatch(BugSliceActions.updateBugCreatedBy('jbdev'))
-
-        ///POSTBUG(bugSelected)
-
-        /*
-        const theNewBug = returnNewBug(); 
-
-        theNewBug.title = bugSelected.title;
-        theNewBug.assignedTo = bugSelected.assignedTo;
-        theNewBug.createdBy = 'jbdev';
-        theNewBug.dateCreated = '2022-05-05 13:00:00';
-        theNewBug.dateFixed = bugSelected.dateFixed;
-        theNewBug.description = bugSelected.description;
-        theNewBug.dueDate = bugSelected.dueDate;
-        theNewBug.isFixed = bugSelected.isFixed;
-        theNewBug.priority = bugSelected.priority;
-        theNewBug.projectId = bugSelected.projectId;
-        theNewBug.severity = bugSelected.severity;
-        theNewBug.stepsToReproduce = bugSelected.stepsToReproduce;
-        */
-        
+        dispatch(BugSliceActions.updateBugDateCreated('2022-05-05 13:00:00'));
+        dispatch(BugSliceActions.updateBugCreatedBy('jbdev'));
 
         postBug(bugSelected);
-
-
 
         //redirect to myBugs
         history.push(`/dashboard`)
