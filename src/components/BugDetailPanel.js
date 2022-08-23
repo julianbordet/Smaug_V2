@@ -174,18 +174,7 @@ const BugDetailPanel = (props) => {
             {bugSelected.bugTransactions &&
                 <div className='formRow'>
                     <div className='form-column'>
-                        <table>
-
-                            <tr>
-                                <th>Date</th>
-                                <th>Transaction</th>
-                                <th>Detail</th>
-                                <th>By</th>
-                            </tr>
-
-                            <PaginatedBugTransactions itemsPerPage={2} bugSelected={bugSelected} />
-
-                        </table>
+                            <PaginatedBugTransactions itemsPerPage={5} bugSelected={bugSelected} />
                     </div>
                 </div>
             }

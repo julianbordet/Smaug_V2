@@ -8,14 +8,29 @@ import "../styles/PaginatedBugTransactions.css";
 function Items({ currentItems }) {
     return (
         <>
-            {currentItems.map((transaction) => (
+            <table>
+
                 <tr>
-                    <th>{transaction.date}</th>
-                    <th>{transaction.transactionTitle}</th>
-                    <th>{transaction.transactionDetail}</th>
-                    <th>{transaction.createdBy}</th>
+                    <th>Date</th>
+                    <th>Transaction</th>
+                    <th>Detail</th>
+                    <th>By</th>
                 </tr>
-            ))}
+
+
+                {currentItems.map((transaction) => (
+                    <tr>
+                        <th>{transaction.date}</th>
+                        <th>{transaction.transactionTitle}</th>
+                        <th>{transaction.transactionDetail}</th>
+                        <th>{transaction.createdBy}</th>
+                    </tr>
+                ))}
+
+
+            </table>
+
+
         </>
     );
 }
@@ -58,19 +73,19 @@ const PaginatedBugTransactions = ({ itemsPerPage, bugSelected }) => {
 
                     <Items currentItems={currentItems} />
 
-                    <div className='pagination-container'>
+                   
                         <ReactPaginate className='pagination-control'
                             breakLabel="..."
-                            nextLabel="next >"
+                            nextLabel=">"
                             onPageChange={handlePageClick}
                             pageRangeDisplayed={5}
                             pageCount={pageCount}
-                            previousLabel="< previous"
+                            previousLabel="<"
                             renderOnZeroPageCount={null}
                         />
-                    </div>
+                   
 
-                
+
 
                 </React.Fragment>
 
