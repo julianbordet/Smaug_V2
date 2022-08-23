@@ -150,6 +150,33 @@ const BugDetailPanel = (props) => {
                         </div>
                     </div>
 
+                    <div className='formRow'>
+                        <div className='form-column'>
+                            <table>
+                                
+                                    
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Transaction</th>
+                                        <th>Detail</th>
+                                        <th>By</th>
+                                    </tr>
+                                    
+                              
+                              
+                                {bugSelected.bugTransactions.map((transaction) => (
+                                            <tr>
+                                                <th>{transaction.date}</th>
+                                                <th>{transaction.transactionTitle}</th>
+                                                <th>{transaction.transactionDetail}</th>
+                                                <th>{transaction.createdBy}</th>
+                                            </tr>
+                                        ))}
+                               
+                            </table>
+                        </div>
+                    </div>
+
                 </form>
 
             }
