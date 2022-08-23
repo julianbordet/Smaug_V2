@@ -157,7 +157,7 @@ const BugDetailPanel = (props) => {
 
             }
 
-            {bugSelected.bugTransactions.length > 0 && 
+            {bugSelected.bugTransactions && 
                 <div className='formRow'>
                     <div className='form-column'>
                         <table>

@@ -34,7 +34,8 @@ const BugSlice = createSlice({
             dateFixed : null,
             description : null,
             stepsToReproduce : null,
-            createdBy : null
+            createdBy : null,
+            bugTransactions : null
         }
     },
     reducers: {
