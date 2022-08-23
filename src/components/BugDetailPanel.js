@@ -6,6 +6,20 @@ import { BugSliceActions } from "../store/BugSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faArrowRotateLeft, faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons'
 import '../styles/BugDetail.css'
+import PaginatedBugTransactions from "./PaginatedBugTransactions";
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const BugDetailPanel = (props) => {
 
@@ -157,7 +171,7 @@ const BugDetailPanel = (props) => {
 
             }
 
-            {bugSelected.bugTransactions && 
+            {bugSelected.bugTransactions &&
                 <div className='formRow'>
                     <div className='form-column'>
                         <table>
@@ -169,14 +183,7 @@ const BugDetailPanel = (props) => {
                                 <th>By</th>
                             </tr>
 
-                            {bugSelected.bugTransactions.map((transaction) => (
-                                <tr>
-                                    <th>{transaction.date}</th>
-                                    <th>{transaction.transactionTitle}</th>
-                                    <th>{transaction.transactionDetail}</th>
-                                    <th>{transaction.createdBy}</th>
-                                </tr>
-                            ))}
+                            <PaginatedBugTransactions itemsPerPage={2} bugSelected={bugSelected} />
 
                         </table>
                     </div>
