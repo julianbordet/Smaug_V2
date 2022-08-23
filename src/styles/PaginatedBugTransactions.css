@@ -1,0 +1,22 @@
+.pagination-control{
+    display: flex;
+    justify-content: center;
+    width:100%;
+    background-color: bisque;
+}
+
+.pagination-control li {
+    list-style-type: none;
+    margin-right: 10px;
+
+}
+
+.pagination-control li:hover {
+    cursor: pointer;
+    color:#d5b038;
+    
+}
+
+.pagination-container{
+    
+}

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
 import { useSelector } from "react-redux";
+import "../styles/PaginatedBugTransactions.css";
 
 function Items({ currentItems }) {
     return (
@@ -52,18 +53,24 @@ const PaginatedBugTransactions = ({ itemsPerPage, bugSelected }) => {
         <>
             {currentItems &&
 
+                //<div className='pagination-container'>
                 <React.Fragment>
 
                     <Items currentItems={currentItems} />
-                    <ReactPaginate
-                        breakLabel="..."
-                        nextLabel="next >"
-                        onPageChange={handlePageClick}
-                        pageRangeDisplayed={5}
-                        pageCount={pageCount}
-                        previousLabel="< previous"
-                        renderOnZeroPageCount={null}
-                    />
+
+                    <div className='pagination-container'>
+                        <ReactPaginate className='pagination-control'
+                            breakLabel="..."
+                            nextLabel="next >"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={5}
+                            pageCount={pageCount}
+                            previousLabel="< previous"
+                            renderOnZeroPageCount={null}
+                        />
+                    </div>
+
+                
 
                 </React.Fragment>
 
