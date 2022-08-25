@@ -5,8 +5,6 @@ import fetchProjectData from '../store/ProjectActions';
 import { useEffect } from 'react';
 
 
-
-
 const MyProjectsPanel = (props) => {
 
     const classes = props.className;

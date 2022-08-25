@@ -1,5 +1,3 @@
-
-
 const isBugDue = (bugObject) => {
 
     let bugDate = new Date(bugObject.dueDate)

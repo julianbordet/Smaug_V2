@@ -33,8 +33,6 @@ const DashboardPanel = (props) =>{
         
         if(bugData){
             
-        
-            
             const tempData1 = drawChartForBugsDueNotDue(bugData);
             setData1(tempData1);
 
@@ -43,9 +41,6 @@ const DashboardPanel = (props) =>{
 
             const tempData3 = drawPriorityChart(bugData);
             setData3(tempData3);
-            
-        
-           //console.log(bugData)
 
             //TODO CHART4
         }

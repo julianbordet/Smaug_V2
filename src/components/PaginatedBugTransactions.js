@@ -9,7 +9,6 @@ function Items({ currentItems }) {
     return (
         <>
             <table>
-
                 <tbody>
 
                 <tr>
@@ -18,7 +17,6 @@ function Items({ currentItems }) {
                     <th>Detail</th>
                     <th>By</th>
                 </tr>
-
 
                 {currentItems.map((transaction) => (
                     <tr key={transaction.transactionId}>
@@ -30,10 +28,7 @@ function Items({ currentItems }) {
                 ))}
 
                 </tbody>
-
-
             </table>
-
 
         </>
     );
@@ -43,7 +38,6 @@ const PaginatedBugTransactions = ({ itemsPerPage, bugSelected }) => {
 
     const [currentItems, setCurrentItems] = useState(null);
     const [pageCount, setPageCount] = useState(null);
-
     const [itemOffset, setItemOffset] = useState(0);
 
 
@@ -87,10 +81,7 @@ const PaginatedBugTransactions = ({ itemsPerPage, bugSelected }) => {
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                         />
-                   
-
-
-
+                        
                 </React.Fragment>
 
             }

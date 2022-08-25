@@ -10,7 +10,6 @@ import { getTodayInYYYY_MM_DD } from "../util/DateUtil"
 import "../styles/NewBugPanel.css"
 
 
-
 const NewBugPanel = (props) => {
 
     const classes = props.className;
@@ -30,8 +29,6 @@ const NewBugPanel = (props) => {
         return () => {
             dispatch(BugSliceActions.setupNewBug());
         }
-        
-
     }
         , []);
 
