@@ -7,7 +7,7 @@ import { faPaperPlane, faArrowRotateLeft } from '@fortawesome/free-solid-svg-ico
 import { postBug } from "../store/BugSliceAsyncActions"
 import { severityOptions, priorityOptions, developerOptions, projectOptions, statusOptions, returnNewBug } from "../util/NewBugSettings"
 import { getTodayInYYYY_MM_DD } from "../util/DateUtil"
-
+import "../styles/NewBugPanel.css" 
 
 
 
@@ -63,54 +63,42 @@ const NewBugPanel = (props) => {
                 <div className='formRow'>
 
                     <label htmlFor='titleInput' className='form-label'>Title:</label>
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugTitle(event.target.value)) }} id='titleInput' name='titleInput' className='form-input' type='text' defaultValue={bugSelected.title}></input>
+                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugTitle(event.target.value)) }} id='titleInput' name='titleInput' className='form-input text-box' type='text' defaultValue={bugSelected.title}></input>
 
 
                     <label htmlFor='projectIdInput' className='form-label'>Project:</label>
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugProjectId(event.target.value)) }} id='projectIdInput' name='projectIdInput' className='form-input' type='text' defaultValue={bugSelected.projectId}></input>
+                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugProjectId(event.target.value)) }} id='projectIdInput' name='projectIdInput' className='form-input text-box' type='text' defaultValue={bugSelected.projectId}></input>
 
 
                     <label className='form-label'>Severity:</label>
-                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input' type='text' defaultValue={bugSelected.severity}>
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input text-box' type='text' defaultValue={bugSelected.severity}>
                     {severityOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
                             </option>
                         ))}
-
-
-
                     </select>
 
 
                     <label htmlFor='priorityInput' className='form-label'>Priority:</label>
-                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugPriority(event.target.value)) }} id='priorityInput' name='priorityInput' className='form-input' type='text'>
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugPriority(event.target.value)) }} id='priorityInput' name='priorityInput' className='form-input text-box' type='text'>
                         {priorityOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
                             </option>
                         ))}
-
                     </select>
-
-
-
-
-
-
-
-
 
                 </div>
 
                 <div className='formRow'>
 
                     <label htmlFor='dueDateInput' className='form-label'>Due date:</label>
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugDueDate(event.target.value)) }} id='dueDateInput' name='dueDateInput' className='form-input' type='date' defaultValue={bugSelected.dueDate}></input>
+                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugDueDate(event.target.value)) }} id='dueDateInput' name='dueDateInput' className='form-input text-box' type='date' defaultValue={bugSelected.dueDate}></input>
 
 
                     <label htmlFor='assignedToInput' className='form-label'>Assigned to:</label>
-                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugAssignedTo(event.target.value)) }} id='assignedToInput' name='assignedToInput' className='form-input' >
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugAssignedTo(event.target.value)) }} id='assignedToInput' name='assignedToInput' className='form-input text-box' >
                         <option value=''>Select</option>
                         <option value='jbdev'>jbdev</option>
                         <option value='mary'>mary</option>
@@ -118,7 +106,7 @@ const NewBugPanel = (props) => {
 
 
                     <label htmlFor='isFixedInput' className='form-label'>Status:</label>
-                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }} id='isFixedInput' name='isFixedInput' className='form-input' type='text'>
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }} id='isFixedInput' name='isFixedInput' className='form-input text-box' type='text'>
                         {statusOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
@@ -132,7 +120,7 @@ const NewBugPanel = (props) => {
                 <div className='formRow'>
                     {bugSelected.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
                     {!bugSelected.dateFixed && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugDateFixed(event.target.value)) }} id='dateFixedInput' name='dateFixedInput' className='form-input' type='date' defaultValue={bugSelected.dateFixed}></input>
+                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugDateFixed(event.target.value)) }} id='dateFixedInput' name='dateFixedInput' className='form-input text-box' type='date' defaultValue={bugSelected.dateFixed}></input>
 
 
                 </div>
