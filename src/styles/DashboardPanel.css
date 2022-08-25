@@ -21,3 +21,14 @@ h3{
     justify-content: center;
     height:80%;
 }
+
+.dashboardContainer{
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73); 
+    box-shadow: -1px -1px 24px -7px rgba(0,0,0,0.73);
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    border-radius: 10px;
+    padding-bottom: 3rem;
+}

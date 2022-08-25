@@ -56,18 +56,18 @@ const DashboardPanel = (props) =>{
     return(
         <div className={classes}>
 
-            <div className='flexColumn'>
+            <div className='flexColumn dashboardContainer'>
 
                 <div className='FlexRow'>
 
               {bugData && data1 && <Card className='dashboard-card'>
-                        <h3>Bugs due:</h3>
+                        <h3>Bugs Due Breakdown</h3>
                         <DoughnutChart chartData={data1} />
                          </Card>
                 }
 
                 {bugData && data2 && <Card className='dashboard-card'>
-                        <h3>Bugs Severity</h3>
+                        <h3>Severity Breakdown</h3>
                         <DoughnutChart chartData={data2} />
                          </Card>
                 }
@@ -77,7 +77,7 @@ const DashboardPanel = (props) =>{
                 <div className='FlexRow'>
 
                 {bugData && data3 && <Card className='dashboard-card'>
-                        <h3>Bugs Priority</h3>
+                        <h3>Priority Breakdown</h3>
                         <DoughnutChart chartData={data3} />
                          </Card>
                 }
