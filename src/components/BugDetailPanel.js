@@ -96,18 +96,18 @@ const BugDetailPanel = (props) => {
 
                     <div className='formRow'>
 
-                        <label htmlFor='titleInput' className='form-label'>Title:</label>
-                        {editActive && <input onChange={(event) => { dispatch(BugSliceActions.updateBugTitle(event.target.value)) }} id='titleInput' name='titleInput' className='form-input text-box' type='text' defaultValue={bugSelected.title}></input>}
-                        {!editActive && <span className='formSpan'>{bugSelected.title}</span>}
+                        <label htmlFor='titleInput' className='form-label '>Title:</label>
+                        {editActive && <input onChange={(event) => { dispatch(BugSliceActions.updateBugTitle(event.target.value)) }} id='titleInput' name='titleInput' className='form-input text-box form-font' type='text' defaultValue={bugSelected.title}></input>}
+                        {!editActive && <span className='formSpan '>{bugSelected.title}</span>}
 
                         <label htmlFor='projectIdInput' className='form-label'>Project:</label>
-                        {editActive && <input onChange={(event) => { dispatch(BugSliceActions.updateBugProjectId(event.target.value)) }} id='projectIdInput' name='projectIdInput' className='form-input text-box' type='text' defaultValue={bugSelected.projectId}></input>}
+                        {editActive && <input onChange={(event) => { dispatch(BugSliceActions.updateBugProjectId(event.target.value)) }} id='projectIdInput' name='projectIdInput' className='form-input text-box form-font' type='text' defaultValue={bugSelected.projectId}></input>}
                         {!editActive && <span className='formSpan'>{bugSelected.projectId}</span>}
 
 
                         <label className='form-label'>Severity:</label>
                         {editActive && 
-                        <select onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input text-box' type='text' defaultValue={bugSelected.severity}>
+                        <select onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input text-box form-font' type='text' defaultValue={bugSelected.severity}>
                         {severityOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
@@ -120,7 +120,7 @@ const BugDetailPanel = (props) => {
 
 
                         <label htmlFor='priorityInput' className='form-label'>Priority:</label>
-                        {editActive && <select onChange={(event) => { dispatch(BugSliceActions.updateBugPriority(event.target.value)) }} id='priorityInput' name='priorityInput' className='form-input text-box' type='text' defaultValue={bugSelected.priority}>
+                        {editActive && <select onChange={(event) => { dispatch(BugSliceActions.updateBugPriority(event.target.value)) }} id='priorityInput' name='priorityInput' className='form-input text-box form-font' type='text' defaultValue={bugSelected.priority}>
                         {priorityOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
@@ -129,20 +129,8 @@ const BugDetailPanel = (props) => {
                         </select>}
                         {!editActive && <span className='formSpan'>{bugSelected.priority}</span>}
 
-
-                        
-
-
-
-
-
-
-
-
-
-
-
                     </div>
+
 
                     <div className='formRow'>
 
@@ -150,28 +138,22 @@ const BugDetailPanel = (props) => {
                         <span className='formSpan'>{bugSelected.dateCreated}</span>
 
                         <label htmlFor='dueDateInput' className='form-label'>Due date:</label>
-                        {editActive && <input onChange={(event) => { dispatch(BugSliceActions.updateBugDueDate(event.target.value)) }} id='dueDateInput' name='dueDateInput' className='form-input text-box' type='date' defaultValue={bugSelected.dueDate}></input>}
+                        {editActive && <input onChange={(event) => { dispatch(BugSliceActions.updateBugDueDate(event.target.value)) }} id='dueDateInput' name='dueDateInput' className='form-input text-box form-font' type='date' defaultValue={bugSelected.dueDate}></input>}
                         {!editActive && <span className='formSpan'>{bugSelected.dueDate}</span>}
 
                         <label htmlFor='assignedToInput' className='form-label'>Assigned to:</label>
-                        {editActive && <select onChange={(event) => { dispatch(BugSliceActions.updateBugAssignedTo(event.target.value)) }} id='assignedToInput' name='assignedToInput' className='form-input text-box' type='text' defaultValue={bugSelected.assignedTo}>
+                        {editActive && <select onChange={(event) => { dispatch(BugSliceActions.updateBugAssignedTo(event.target.value)) }} id='assignedToInput' name='assignedToInput' className='form-input text-box form-font' type='text' defaultValue={bugSelected.assignedTo}>
                             <option value='jbdev'>jbdev</option>
                             <option value='mary'>mary</option>
                         </select>}
                         {!editActive && <span className='formSpan'>{bugSelected.assignedTo}</span>}
 
 
-
-
-
-
-
-
                         <label htmlFor='isFixedInput' className='form-label'>Status:</label>
                         {editActive && <select onChange={(event) => { 
                             if(event.target.value == 1) {setBugIsFixed(1);} else {setBugIsFixed(0)}
                             dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }}
-                            id='isFixedInput' name='isFixedInput' className='form-input text-box' type='text' defaultValue={bugSelected.isFixed}>
+                            id='isFixedInput' name='isFixedInput' className='form-input text-box form-font' type='text' defaultValue={bugSelected.isFixed}>
                             {statusOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
@@ -181,29 +163,11 @@ const BugDetailPanel = (props) => {
                         {!editActive && <span className='formSpan'>{(bugSelected.isFixed === 0) ? 'Pending' : 'Fixed'}</span>}
 
 
-
-
                     </div>
 
 
-
-
-
-
-
-
-
-
                     <div className='formRow'>
-                        
-                       
-                        
-                        
-
-
-
-                        
-                        
+                    
                         {editActive && bugIsFixed == 1 &&
 
                     <div className='formRow'>
@@ -211,46 +175,18 @@ const BugDetailPanel = (props) => {
                         {!bugSelected.dateFixed && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
                         <input onChange={(event) => { dispatch(BugSliceActions.updateBugDateFixed(event.target.value)) }} id='dateFixedInput' name='dateFixedInput' className='form-input text-box' type='date' defaultValue={bugSelected.dateFixed}></input>
                     </div>
-
-                
-                        
-                        
-                        
-                        
                         }
-                        
-                        
-                        
 
-
-
-
-
-
-                        
                         {!editActive && <span className='formSpan'>{bugSelected.dateFixed}</span>}
 
                     </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <div className='formRow'>
                         <div className='form-column'>
                             <label htmlFor='descriptionInput' className='form-label'>Description:</label>
-                            {editActive && <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugDescription(event.target.value)) }} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugSelected.description}></textarea>}
+                            {editActive && <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugDescription(event.target.value)) }} id='descriptionInput' name='descriptionInput' className='form-input form-font' type='text' defaultValue={bugSelected.description}></textarea>}
                             {!editActive && <p className='formSpan'>{bugSelected.description}</p>}
                         </div>
                     </div>
@@ -258,19 +194,17 @@ const BugDetailPanel = (props) => {
                     <div className='formRow'>
                         <div className='form-column'>
                             <label htmlFor='stepsToReproduceInput' className='form-label'>Steps to reproduce:</label>
-                            {editActive && <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugStepsToReproduce(event.target.value)) }} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input' type='text' defaultValue={bugSelected.stepsToReproduce}></textarea>}
+                            {editActive && <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugStepsToReproduce(event.target.value)) }} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input form-font' type='text' defaultValue={bugSelected.stepsToReproduce}></textarea>}
                             {!editActive && <p className='formSpan'>{bugSelected.stepsToReproduce}</p>}
                         </div>
                     </div>
-
-
 
 
                 </form>
 
             }
 
-            {bugSelected.bugTransactions &&
+            {bugSelected.bugTransactions.length > 0 &&
                 <div className='formRow'>
                     <div className='form-column'>
                             <PaginatedBugTransactions itemsPerPage={5} bugSelected={bugSelected} />

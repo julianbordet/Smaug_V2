@@ -14,7 +14,7 @@ const newBug = {
     description : "",
     stepsToReproduce : "",
     createdBy : "",
-    bugTransactions : null
+    bugTransactions : []
 }; 
 
 const BugSlice = createSlice({
@@ -36,7 +36,7 @@ const BugSlice = createSlice({
             description : null,
             stepsToReproduce : null,
             createdBy : null,
-            bugTransactions : null
+            bugTransactions : []
         }
     },
     reducers: {

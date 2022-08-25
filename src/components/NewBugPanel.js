@@ -138,7 +138,7 @@ const NewBugPanel = (props) => {
                 <div className='formRow'>
                     <div className='form-column'>
                         <label htmlFor='descriptionInput' className='form-label'>Description:</label>
-                        <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugDescription(event.target.value)) }} id='descriptionInput' name='descriptionInput' className='form-input' type='text' defaultValue={bugSelected.description}></textarea>
+                        <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugDescription(event.target.value)) }} id='descriptionInput' name='descriptionInput' className='form-input form-font' type='text' defaultValue={bugSelected.description}></textarea>
 
                     </div>
                 </div>
@@ -146,7 +146,7 @@ const NewBugPanel = (props) => {
                 <div className='formRow'>
                     <div className='form-column'>
                         <label htmlFor='stepsToReproduceInput' className='form-label'>Steps to reproduce:</label>
-                        <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugStepsToReproduce(event.target.value)) }} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input' type='text' defaultValue={bugSelected.stepsToReproduce}></textarea>
+                        <textarea rows='15' cols='120' onChange={(event) => { dispatch(BugSliceActions.updateBugStepsToReproduce(event.target.value)) }} id='stepsToReproduceInput' name='stepsToReproduceInput' className='form-input form-font' type='text' defaultValue={bugSelected.stepsToReproduce}></textarea>
 
                     </div>
                 </div>
