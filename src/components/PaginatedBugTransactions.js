@@ -10,6 +10,8 @@ function Items({ currentItems }) {
         <>
             <table>
 
+                <tbody>
+
                 <tr>
                     <th>Date</th>
                     <th>Transaction</th>
@@ -19,13 +21,15 @@ function Items({ currentItems }) {
 
 
                 {currentItems.map((transaction) => (
-                    <tr>
+                    <tr key={transaction.transactionId}>
                         <th>{transaction.date}</th>
                         <th>{transaction.transactionTitle}</th>
                         <th>{transaction.transactionDetail}</th>
                         <th>{transaction.createdBy}</th>
                     </tr>
                 ))}
+
+                </tbody>
 
 
             </table>
@@ -46,7 +50,7 @@ const PaginatedBugTransactions = ({ itemsPerPage, bugSelected }) => {
     useEffect(() => {
         // Fetch items from another resources.
         const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        
         setCurrentItems(bugSelected.bugTransactions.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(bugSelected.bugTransactions.length / itemsPerPage));
     }, [itemOffset, itemsPerPage]);
