@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BugSliceActions } from "../store/BugSlice";
 import { useHistory } from "react-router-dom";
@@ -7,7 +7,7 @@ import { faPaperPlane, faArrowRotateLeft } from '@fortawesome/free-solid-svg-ico
 import { postBug } from "../store/BugSliceAsyncActions"
 import { severityOptions, priorityOptions, developerOptions, projectOptions, statusOptions, returnNewBug } from "../util/NewBugSettings"
 import { getTodayInYYYY_MM_DD } from "../util/DateUtil"
-import "../styles/NewBugPanel.css" 
+import "../styles/NewBugPanel.css"
 
 
 
@@ -19,15 +19,18 @@ const NewBugPanel = (props) => {
     const dispatch = useDispatch();
     const bugSelected = useSelector((state) => state.fetchBugData.inMemoryBug);
 
+
+    const [bugIsFixed, setBugIsFixed] = useState(0);
+
     useEffect(() => {
         dispatch(BugSliceActions.setupNewBug());
 
         //Cleanup function
-        /*
+        
         return () => {
             dispatch(BugSliceActions.setupNewBug());
         }
-        */
+        
 
     }
         , []);
@@ -72,7 +75,7 @@ const NewBugPanel = (props) => {
 
                     <label className='form-label'>Severity:</label>
                     <select onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input text-box' type='text' defaultValue={bugSelected.severity}>
-                    {severityOptions.map(option => (
+                        {severityOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
                             </option>
@@ -106,7 +109,10 @@ const NewBugPanel = (props) => {
 
 
                     <label htmlFor='isFixedInput' className='form-label'>Status:</label>
-                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }} id='isFixedInput' name='isFixedInput' className='form-input text-box' type='text'>
+                    <select onChange={(event) => { 
+                            if(event.target.value == 1) {setBugIsFixed(1);} else {setBugIsFixed(0)}
+                            dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }} id='isFixedInput' name='isFixedInput' className='form-input text-box' type='text'>
+                        
                         {statusOptions.map(option => (
                             <option key={option.value} value={option.value}>
                                 {option.text}
@@ -117,13 +123,17 @@ const NewBugPanel = (props) => {
 
                 </div>
 
-                <div className='formRow'>
-                    {bugSelected.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
-                    {!bugSelected.dateFixed && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugDateFixed(event.target.value)) }} id='dateFixedInput' name='dateFixedInput' className='form-input text-box' type='date' defaultValue={bugSelected.dateFixed}></input>
+                {bugIsFixed == 1 &&
+
+                    <div className='formRow'>
+                        {bugSelected.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
+                        {!bugSelected.dateFixed && <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label>}
+                        <input onChange={(event) => { dispatch(BugSliceActions.updateBugDateFixed(event.target.value)) }} id='dateFixedInput' name='dateFixedInput' className='form-input text-box' type='date' defaultValue={bugSelected.dateFixed}></input>
+                    </div>
+
+                }
 
 
-                </div>
 
                 <div className='formRow'>
                     <div className='form-column'>

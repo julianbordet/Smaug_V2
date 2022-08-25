@@ -1,5 +1,5 @@
 const severityOptions = [
-    {value: '', text: '--Choose an option--'},
+    {value: '', text: 'Select'},
     {value: 'CRITICAL', text: 'Critical' },
     {value: 'HIGH', text: 'High'},
     {value: 'MEDIUM', text: 'Medium'},
@@ -7,7 +7,7 @@ const severityOptions = [
 ];
 
 const priorityOptions = [
-    {value: '', text: '--Choose an option--'},
+    {value: '', text: 'Select'},
     {value: 'CRITICAL', text: 'Critical' },
     {value: 'HIGH', text: 'High'},
     {value: 'MEDIUM', text: 'Medium'},
@@ -24,8 +24,8 @@ const projectOptions = () =>{
 
 const statusOptions = [
     {value: '', text: 'Select'},
-    {value: '0', text: 'Pending'},
-    {value: '1', text: 'Fixed'}
+    {value: 0, text: 'Pending'},
+    {value: 1, text: 'Fixed'}
 ];
 
 const returnNewBug = ()=>{
