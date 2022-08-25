@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { BugSliceActions } from "../store/BugSlice";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { postBug } from "../store/BugSliceAsyncActions"
-import { severityOptions, priorityOptions, developerOptions, projectOptions, statusOptions, returnNewBug } from "../util/NewBugSettings"
-import { getTodayInYYYY_MM_DD } from "../util/DateUtil"
+import { severityOptions, priorityOptions, statusOptions } from "../util/NewBugSettings"
 import "../styles/NewBugPanel.css"
 
 
@@ -30,7 +29,7 @@ const NewBugPanel = (props) => {
             dispatch(BugSliceActions.setupNewBug());
         }
     }
-        , []);
+        , [dispatch]);
 
 
     const submitHandler = (event) => {
@@ -107,7 +106,7 @@ const NewBugPanel = (props) => {
 
                     <label htmlFor='isFixedInput' className='form-label'>Status:</label>
                     <select onChange={(event) => { 
-                            if(event.target.value == 1) {setBugIsFixed(1);} else {setBugIsFixed(0)}
+                            if(event.target.value === 1) {setBugIsFixed(1);} else {setBugIsFixed(0)}
                             dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }} id='isFixedInput' name='isFixedInput' className='form-input text-box' type='text'>
                         
                         {statusOptions.map(option => (
@@ -120,7 +119,7 @@ const NewBugPanel = (props) => {
 
                 </div>
 
-                {bugIsFixed == 1 &&
+                {bugIsFixed === 1 &&
 
                     <div className='formRow'>
                         {bugSelected.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}

@@ -1,8 +1,8 @@
-import { current } from '@reduxjs/toolkit';
+
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+
 import ReactPaginate from 'react-paginate';
-import { useSelector } from "react-redux";
+
 import "../styles/PaginatedBugTransactions.css";
 
 function Items({ currentItems }) {
@@ -81,7 +81,7 @@ const PaginatedBugTransactions = ({ itemsPerPage, bugSelected }) => {
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                         />
-                        
+
                 </React.Fragment>
 
             }

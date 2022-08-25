@@ -1,6 +1,4 @@
 import React from "react";
-import VerticalNavbar from "./VerticalNavbar";
-import MainPanel from "./MainPanel";
 import '../../styles/Body.css';
 
 

@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useHistory } from 'react-router-dom'
 import { fetchBugByBugId, updateBug, deleteBug } from '../store/BugSliceAsyncActions'
-import BugSlice, { BugSliceActions } from "../store/BugSlice";
+import { BugSliceActions } from "../store/BugSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faArrowRotateLeft, faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons'
 import '../styles/BugDetail.css'
 import PaginatedBugTransactions from "./PaginatedBugTransactions";
-import { severityOptions, priorityOptions, developerOptions, projectOptions, statusOptions, returnNewBug } from "../util/NewBugSettings"
+import { severityOptions, priorityOptions, statusOptions} from "../util/NewBugSettings"
 
 
 const BugDetailPanel = (props) => {
@@ -151,7 +151,7 @@ const BugDetailPanel = (props) => {
 
                         <label htmlFor='isFixedInput' className='form-label'>Status:</label>
                         {editActive && <select onChange={(event) => { 
-                            if(event.target.value == 1) {setBugIsFixed(1);} else {setBugIsFixed(0)}
+                            if(event.target.value === 1) {setBugIsFixed(1);} else {setBugIsFixed(0)}
                             dispatch(BugSliceActions.updateBugIsFixed(event.target.value)) }}
                             id='isFixedInput' name='isFixedInput' className='form-input text-box form-font' type='text' defaultValue={bugSelected.isFixed}>
                             {statusOptions.map(option => (
@@ -168,7 +168,7 @@ const BugDetailPanel = (props) => {
 
                     <div className='formRow'>
                     
-                        {editActive && bugIsFixed == 1 &&
+                        {editActive && bugIsFixed === 1 &&
 
                     <div className='formRow'>
                         {bugSelected.dateFixed ? <label htmlFor='dateFixedInput' className='form-label'>Date fixed:</label> : ''}
