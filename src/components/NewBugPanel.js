@@ -23,9 +23,11 @@ const NewBugPanel = (props) => {
         dispatch(BugSliceActions.setupNewBug());
 
         //Cleanup function
+        /*
         return () => {
             dispatch(BugSliceActions.setupNewBug());
         }
+        */
 
     }
         , []);
@@ -69,14 +71,34 @@ const NewBugPanel = (props) => {
 
 
                     <label className='form-label'>Severity:</label>
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input' type='text' defaultValue={bugSelected.severity}>
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugSeverity(event.target.value)) }} id='severityInput' name='severityInput' className='form-input' type='text' defaultValue={bugSelected.severity}>
+                    {severityOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.text}
+                            </option>
+                        ))}
 
 
-                    </input>
+
+                    </select>
 
 
                     <label htmlFor='priorityInput' className='form-label'>Priority:</label>
-                    <input onChange={(event) => { dispatch(BugSliceActions.updateBugPriority(event.target.value)) }} id='priorityInput' name='priorityInput' className='form-input' type='text' defaultValue={bugSelected.priority}></input>
+                    <select onChange={(event) => { dispatch(BugSliceActions.updateBugPriority(event.target.value)) }} id='priorityInput' name='priorityInput' className='form-input' type='text'>
+                        {priorityOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.text}
+                            </option>
+                        ))}
+
+                    </select>
+
+
+
+
+
+
+
 
 
                 </div>

@@ -10,7 +10,7 @@ const newBug = {
     dueDate : "",
     assignedTo : "",
     isFixed : "",
-    dateFixed : "",
+    dateFixed : null,
     description : "",
     stepsToReproduce : "",
     createdBy : "",
