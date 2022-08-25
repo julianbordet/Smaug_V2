@@ -13,7 +13,8 @@ const newBug = {
     dateFixed : "",
     description : "",
     stepsToReproduce : "",
-    createdBy : ""
+    createdBy : "",
+    bugTransactions : null
 }; 
 
 const BugSlice = createSlice({

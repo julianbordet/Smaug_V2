@@ -2,23 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useHistory } from 'react-router-dom'
 import { fetchBugByBugId, updateBug, deleteBug } from '../store/BugSliceAsyncActions'
-import { BugSliceActions } from "../store/BugSlice";
+import BugSlice, { BugSliceActions } from "../store/BugSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faArrowRotateLeft, faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons'
 import '../styles/BugDetail.css'
 import PaginatedBugTransactions from "./PaginatedBugTransactions";
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 const BugDetailPanel = (props) => {
@@ -39,6 +27,13 @@ const BugDetailPanel = (props) => {
     //pido el bug especifico usando el bugId a la DB
     useEffect(() => {
         dispatch(fetchBugByBugId(paramValue));
+
+
+        //Cleanup function
+        return () => {
+            dispatch(BugSliceActions.setupNewBug());
+        }
+
     }
         , [dispatch]);
 

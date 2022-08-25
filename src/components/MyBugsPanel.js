@@ -5,6 +5,7 @@ import "../styles/TableStyles.css"
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBugList } from '../store/BugSliceAsyncActions';
 import { useHistory } from 'react-router-dom';
+import { BugSliceActions } from "../store/BugSlice";
 
 const MyBugsPanel = (props) => {
 
@@ -17,6 +18,11 @@ const MyBugsPanel = (props) => {
     
     useEffect( () =>{
         dispatch(fetchBugList());
+
+          //Cleanup function
+        return () => {
+            dispatch(BugSliceActions.updateInMemoryBugList([]));
+        }
     }
     ,[dispatch])
     

@@ -8,7 +8,6 @@ import { postBug } from "../store/BugSliceAsyncActions"
 import { severityOptions, priorityOptions, developerOptions, projectOptions, statusOptions, returnNewBug } from "../util/NewBugSettings"
 import { getTodayInYYYY_MM_DD } from "../util/DateUtil"
 
-import { thunkThing } from "../store/BugSliceAsyncActions";
 
 
 
@@ -22,6 +21,11 @@ const NewBugPanel = (props) => {
 
     useEffect(() => {
         dispatch(BugSliceActions.setupNewBug());
+
+        //Cleanup function
+        return () => {
+            dispatch(BugSliceActions.setupNewBug());
+        }
 
     }
         , []);
